@@ -314,7 +314,7 @@
           </tr>
           <tr>
             <td>Trust assumption<sup style="color: var(--text-faint);">1</sup></td>
-            <td>M of N middleware</td>
+            <td>M of N arbitrators</td>
             <td>Facilitator + seller</td>
             <td>Evaluator</td>
             <td>Operator</td>
@@ -330,12 +330,9 @@
       </table>
 
       <p style="margin-top: 16px; color: var(--text-faint); font-size: 0.82rem;">
-        <sup>1</sup> Idios runs on a single trusted middleware operator today. M of N multi operator settlement is Phase 1 of the roadmap. Refunds are always available to the requester.
+        <sup>1</sup> Disputes resolve via a single on-chain arbitrator today. M of N multi-arbitrator resolution is Phase 1 of the roadmap. Refunds for expired Open jobs are always available to the requester.
       </p>
 
-      <div class="callout" style="margin-top: 32px;">
-        <strong>Phase 4: Hypertensor subnet integration.</strong> Today the middleware is the trust point. Long term, Idios can run as a Hypertensor subnet, with epoch based scoring and attestation by staked validators replacing the middleware operators. Trust moves from a small operator set to a network of staked validators. Verification design is open work, AI scoring is hard, and Hypertensor leaves the scoring mechanism to each subnet. Gated on Hypertensor mainnet.
-      </div>
     </div>
   </section>
 
@@ -414,7 +411,7 @@
 
       <div style="max-width: 760px;">
         <h3>Architecture</h3>
-        <p>Beam shader contract handles escrow state. Python middleware coordinates settlement signatures. Browser side dapp talks to the wallet's embedded node at <code>127.0.0.1:10005</code>. Result delivery via hash today, IPFS payload delivery on the roadmap.</p>
+        <p>Beam shader contract handles escrow state and routes funds. Browser side dapp talks to the wallet's embedded node at <code>127.0.0.1:10005</code>. Two settlement modes: Fast (hash match auto settles) and Reviewed (requester approves with arbitrator backstop). Result delivery via hash today, IPFS payload delivery on the roadmap.</p>
 
         <h3 style="margin-top: 48px;">Resources</h3>
         <ul style="color: var(--text-dim); padding-left: 20px; line-height: 1.8;">
@@ -427,10 +424,10 @@
         <h3 style="margin-top: 48px;">Roadmap</h3>
         <ul style="color: var(--text-dim); padding-left: 20px; line-height: 1.8;">
           <li><strong style="color: var(--text);">Phase 0 (shipped):</strong> mainnet v2.1 contract, dapp v2.1.4 with both Fast and Reviewed settlement modes, four Mode B resolution paths verified end to end on mainnet, explorer parser</li>
-          <li><strong style="color: var(--text);">Phase 1:</strong> M of N multi operator middleware</li>
+          <li><strong style="color: var(--text);">Phase 1:</strong> M of N multi-arbitrator dispute resolution</li>
           <li><strong style="color: var(--text);">Phase 2:</strong> IPFS payload delivery</li>
           <li><strong style="color: var(--text);">Phase 3:</strong> verification triggers for non deterministic work</li>
-          <li><strong style="color: var(--text);">Phase 4:</strong> Hypertensor subnet integration</li>
+          
         </ul>
 
         <div class="callout" style="margin-top: 48px;">
@@ -454,7 +451,7 @@
         </details>
         <details>
           <summary>Is this trustless?</summary>
-          <p>Not yet. Today there is a single trusted middleware operator that signs settlements. Refunds are always available to the requester regardless. Phase 1 introduces M of N multi operator middleware (recommended N=3, M=2) which removes the single point of trust.</p>
+          <p>Partially. Mode A is fully trustless: settlement requires a hash match, no third party can intervene. Mode B introduces an on-chain arbitrator who can resolve disputes if the requester and worker disagree. Today there is a single arbitrator. Phase 1 introduces M of N multi-arbitrator resolution which removes the single point of trust. Refunds for expired Open jobs are always available without arbitrator involvement.</p>
         </details>
         <details>
           <summary>Can my funds be frozen on Idios?</summary>
@@ -463,10 +460,6 @@
         <details>
           <summary>How does this work without a bridge?</summary>
           <p>Idios runs as a Beam shader contract on Beam mainnet. There is no second chain, no bridge, no wrapped assets. Payments and collateral are native BEAM throughout.</p>
-        </details>
-        <details>
-          <summary>What's the relationship with Hypertensor?</summary>
-          <p>Idios is independent. Phase 4 of the roadmap is to operate as a Hypertensor subnet, which decentralizes verification fully. This is long term and gated on Hypertensor mainnet, not a current dependency.</p>
         </details>
         <details>
           <summary>Where do I get BEAM?</summary>
