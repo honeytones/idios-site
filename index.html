@@ -193,8 +193,8 @@
 
       <div class="status-bar">
         <span><span class="dot"></span>Live on Beam mainnet</span>
-        <span>Contract <code>74c497b7...f27027</code></span>
-        <span>v1.1.0</span>
+        <span>Contract <code>f40eb64d...cdc45</code></span>
+        <span>v2.1.4</span>
       </div>
     </div>
   </header>
@@ -228,12 +228,12 @@
         <div class="flow-step">
           <div class="num">03</div>
           <h4>Verify</h4>
-          <p>Result hash is checked against the requester's expected hash.</p>
+          <p>Result hash matches in Mode A. Or the requester reviews and approves the work in Mode B.</p>
         </div>
         <div class="flow-step">
           <div class="num">04</div>
           <h4>Settle</h4>
-          <p>Funds release privately. Disputes slash collateral. Timeouts refund.</p>
+          <p>Funds release privately. Disputes go to arbitration. Worker can claim after review timeout. Open jobs refund after expiry.</p>
         </div>
       </div>
 
@@ -300,7 +300,7 @@
           </tr>
           <tr>
             <td>Verification mechanism</td>
-            <td>Result hash + slashing</td>
+            <td>Result hash or reviewed approval, with arbitrator</td>
             <td>None (pay first)</td>
             <td>Evaluator attestation</td>
             <td>Operator decides</td>
@@ -347,15 +347,15 @@
       <div class="grid-3" style="margin-top: 32px;">
         <div class="card">
           <h3>Active since</h3>
-          <p>[TODO: deployment date of contract 74c497b7...]</p>
+          <p>May 2, 2026 (block 3842196)</p>
         </div>
         <div class="card">
           <h3>Contract</h3>
-          <p><code style="font-size: 0.75em;">74c497b7fe906c...</code></p>
+          <p><code style="font-size: 0.75em;">f40eb64da63a69...</code></p>
         </div>
         <div class="card">
           <h3>Explorer</h3>
-          <p><a href="https://explorer.0xmx.net/?network=mainnet&type=contract&id=74c497b7fe906c09e0da91d1a5e43b2afe122b1a6af3ae74c9440259d6f27027">View parsed history</a></p>
+          <p><a href="https://explorer.0xmx.net/?network=mainnet&type=contract&id=f40eb64da63a69d91afa1a947d9d272a9f80027d7261aa822ec0e4b5827cdc45">View parsed history</a></p>
         </div>
       </div>
     </div>
@@ -419,14 +419,14 @@
         <h3 style="margin-top: 48px;">Resources</h3>
         <ul style="color: var(--text-dim); padding-left: 20px; line-height: 1.8;">
           <li><a href="https://github.com/honeytones/idios">Source repository</a></li>
-          <li><a href="https://explorer.0xmx.net/?network=mainnet&type=contract&id=74c497b7fe906c09e0da91d1a5e43b2afe122b1a6af3ae74c9440259d6f27027">Live contract on explorer</a></li>
+          <li><a href="https://explorer.0xmx.net/?network=mainnet&type=contract&id=f40eb64da63a69d91afa1a947d9d272a9f80027d7261aa822ec0e4b5827cdc45">Live contract on explorer</a></li>
           <li>[TODO: link to architecture doc]</li>
           <li>[TODO: link to method signatures / API reference]</li>
         </ul>
 
         <h3 style="margin-top: 48px;">Roadmap</h3>
         <ul style="color: var(--text-dim); padding-left: 20px; line-height: 1.8;">
-          <li><strong style="color: var(--text);">Phase 0 (shipped):</strong> mainnet contract, dapp v1.1.0, explorer parser</li>
+          <li><strong style="color: var(--text);">Phase 0 (shipped):</strong> mainnet v2.1 contract, dapp v2.1.4 with both Fast and Reviewed settlement modes, four Mode B resolution paths verified end to end on mainnet, explorer parser</li>
           <li><strong style="color: var(--text);">Phase 1:</strong> M of N multi operator middleware</li>
           <li><strong style="color: var(--text);">Phase 2:</strong> IPFS payload delivery</li>
           <li><strong style="color: var(--text);">Phase 3:</strong> verification triggers for non deterministic work</li>
