@@ -183,8 +183,8 @@
   <header class="hero" id="top">
     <div class="container">
       <div class="tagline">Private settlement on Beam</div>
-      <h1>Private escrow for AI and compute.</h1>
-      <p class="lead">Idios is escrow and settlement for compute work, built on Beam MimbleWimble. Amounts are hidden. Identities are hidden. Disputes resolve on-chain. No bridge. No tokens to bridge. No leaks.</p>
+      <h1>Private escrow for AI agent commerce.</h1>
+      <p class="lead">Idios is escrow and settlement for AI agents and the compute work behind them, built on Beam MimbleWimble. Amounts are hidden. Identities are hidden. Disputes resolve on-chain. No bridge. No tokens to bridge. No leaks.</p>
 
       <div class="ctas">
         <a class="btn btn-primary" href="#install">Try it now</a>
@@ -205,6 +205,7 @@
       <div style="max-width: 720px;">
         <p>Public payment rails leak. Every job, every payment, every counterparty becomes part of a permanent searchable record. For AI inference, model training, scientific compute, work that often involves proprietary inputs, private data, or competitive operations. That's a nonstarter.</p>
         <p>FHE is too slow. ZK rollups are expensive and still expose patterns. Beam's MimbleWimble protocol already hides amounts and identities at the base layer. Idios is what you get when you build escrow on top of that. Privacy as the default, not a bolt on.</p>
+        <p>ERC-8183 is the emerging Ethereum standard for AI agent commerce, defining a Job primitive with Client, Provider, and Evaluator roles. Idios implements the same primitive with the same lifecycle. The difference is the chain. Every ERC-8183 implementation on Ethereum, Base, BNB is public by default. Idios is the private one.</p>
       </div>
     </div>
   </section>
@@ -331,6 +332,8 @@
 
       <p style="margin-top: 16px; color: var(--text-faint); font-size: 0.82rem;">
         <sup>1</sup> Disputes resolve via a single on-chain arbitrator today. M of N multi-arbitrator resolution is Phase 1 of the roadmap. Refunds for expired Open jobs are always available to the requester.
+        <br><br>
+        <sup>2</sup> Idios uses the same Job lifecycle as ERC-8183 (Open, Funded, Submitted, Terminal). Field names in current contract code are Requester, Worker, Arbitrator, mapping to ERC-8183's Client, Provider, Evaluator. Semantic alignment with ERC-8183 naming is on the roadmap.
       </p>
 
     </div>
@@ -425,6 +428,7 @@
         <ul style="color: var(--text-dim); padding-left: 20px; line-height: 1.8;">
           <li><strong style="color: var(--text);">Phase 0 (shipped):</strong> mainnet v3 contract, dapp v2.1.4 with both Fast and Reviewed settlement modes, four Mode B resolution paths verified end to end on mainnet, explorer parser</li>
           <li><strong style="color: var(--text);">Phase 1:</strong> M of N multi-arbitrator dispute resolution</li>
+          <li><strong style="color: var(--text);">Phase 1.5:</strong> ERC-8183 semantic alignment (Client, Provider, Evaluator naming in contract and dapp UI)</li>
           <li><strong style="color: var(--text);">Phase 2:</strong> IPFS payload delivery</li>
           <li><strong style="color: var(--text);">Phase 3:</strong> verification triggers for non deterministic work</li>
           
@@ -452,6 +456,10 @@
         <details>
           <summary>Is this trustless?</summary>
           <p>Partially. Mode A is fully trustless: settlement requires a hash match, no third party can intervene. Mode B introduces an on-chain arbitrator who can resolve disputes if the requester and worker disagree. Today there is a single arbitrator. Phase 1 introduces M of N multi-arbitrator resolution which removes the single point of trust. Refunds for expired Open jobs are always available without arbitrator involvement.</p>
+        </details>
+        <details>
+          <summary>How does Idios relate to ERC-8183?</summary>
+          <p>ERC-8183 is the Ethereum standard for trustless escrow between AI agents, defining a Job with Client, Provider, and Evaluator roles. Idios implements the same primitive and same job lifecycle on Beam, where amounts and counterparties are private by default. The current contract uses the names Requester, Worker, and Arbitrator. Semantic alignment with ERC-8183 naming is on the roadmap. The two are compatible designs at the protocol layer, on different chains with different privacy properties.</p>
         </details>
         <details>
           <summary>Can my funds be frozen on Idios?</summary>
