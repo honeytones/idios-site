@@ -194,7 +194,7 @@
       <div class="status-bar">
         <span><span class="dot"></span>Live on Beam mainnet</span>
         <span>Contract <code>f40eb64d...cdc45</code></span>
-        <span>v3.0.9</span>
+        <span>v3.0.10</span>
       </div>
     </div>
   </header>
@@ -315,7 +315,7 @@
           </tr>
           <tr>
             <td>Trust assumption<sup style="color: var(--text-faint);">1</sup></td>
-            <td>M of N arbitrators</td>
+            <td>Single arbitrator today (M of N on roadmap)</td>
             <td>Facilitator + seller</td>
             <td>Evaluator</td>
             <td>Operator</td>
@@ -384,7 +384,7 @@
         </div>
       </div>
 
-      <p style="margin-top: 40px; color: var(--text-dim);">[TODO: embed dapp screenshot or short demo video here]</p>
+      <img src="dapp-automate-modal.png" alt="The Automate this job modal in the Idios dapp, showing the daemon config generator with role selector and live JSON preview" style="margin-top: 40px; width: 100%; max-width: 720px; display: block; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
     </div>
   </section>
 
@@ -420,8 +420,8 @@
         <ul style="color: var(--text-dim); padding-left: 20px; line-height: 1.8;">
           <li><a href="https://github.com/honeytones/idios">Source repository</a></li>
           <li><a href="https://explorer.0xmx.net/?network=mainnet&type=contract&id=f40eb64da63a69d91afa1a947d9d272a9f80027d7261aa822ec0e4b5827cdc45">Live contract on explorer</a></li>
-          <li>[TODO: link to architecture doc]</li>
-          <li>[TODO: link to method signatures / API reference]</li>
+          <li><a href="https://github.com/honeytones/idios#how-it-works">Architecture overview</a></li>
+          <li><a href="https://github.com/honeytones/idios#contract">Contract methods and roles</a></li>
         </ul>
 
         <h3 style="margin-top: 48px;">Roadmap</h3>
@@ -474,7 +474,7 @@
         </details>
         <details>
           <summary>Is the contract audited?</summary>
-          <p>[TODO: honest answer covering current audit status, testing, who has reviewed it informally e.g. Vlad's multisig guidance, Max's explorer review]</p>
+          <p>No, the contract has not been formally audited. It's open source, deployed on Beam mainnet since May 2, 2026, and has been tested end to end across all settlement, dispute, refund, and timeout paths. For high-value jobs treat it accordingly. Formal audit is on the roadmap when there's a real reason to fund one.</p>
         </details>
       </div>
     </div>
@@ -487,7 +487,6 @@
       </div>
       <ul>
         <li><a href="https://github.com/honeytones/idios">GitHub</a></li>
-        <li><a href="#">[TODO: Telegram link]</a></li>
         <li><a href="https://beam.mw">Beam</a></li>
       </ul>
     </div>
