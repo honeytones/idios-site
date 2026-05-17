@@ -453,6 +453,10 @@
           <p>Beam's MimbleWimble protocol hides amounts and identities at the base layer. On Ethereum you'd need ZK rollups or mixers to approximate this, and the rollup adds cost, complexity, and a bridge. Beam already gives you the privacy primitives natively. Idios just needed to build escrow on top.</p>
         </details>
         <details>
+          <summary>What assets can I pay in?</summary>
+          <p>BEAM (the native asset) or NPH. NPH is a USD-pegged confidential stablecoin minted by the Nephrite protocol on Beam. It gives you the price stability of a stablecoin while keeping amounts and counterparties private at the protocol level. Both assets share the same confidentiality properties, neither has a central issuer that can freeze addresses, and both are usable in any Idios job.</p>
+        </details>
+        <details>
           <summary>Is this trustless?</summary>
           <p>Partially. Mode A is fully trustless: settlement requires a hash match, no third party can intervene. Mode B introduces an on-chain arbitrator who can resolve disputes if the requester and worker disagree. Today there is a single arbitrator. Phase 1 introduces M of N multi-arbitrator resolution which removes the single point of trust. Refunds for expired Open jobs are always available without arbitrator involvement.</p>
         </details>
@@ -462,11 +466,11 @@
         </details>
         <details>
           <summary>Can my funds be frozen on Idios?</summary>
-          <p>No. Beam is permissionless and BEAM has no central issuer that can blacklist addresses. Compare this to USDC and USDT, where the issuers have contract level blacklist functions and have frozen thousands of addresses for billions of dollars combined, sometimes catching up innocent users whose funds are commingled with tainted activity or swept up in lawsuits and court orders targeting unrelated parties. With Idios, the funds in escrow are simply BEAM. No third party can freeze them.</p>
+          <p>No. Idios supports BEAM and NPH (a USD-pegged confidential stablecoin minted by the Nephrite protocol on Beam). Neither asset has a central issuer with blacklist functions. Compare this to USDC and USDT, where the issuers have contract level blacklist functions and have frozen thousands of addresses for billions of dollars combined, sometimes catching up innocent users whose funds are commingled with tainted activity or swept up in lawsuits and court orders. With Idios, the funds in escrow are BEAM or NPH. No third party can freeze them.</p>
         </details>
         <details>
           <summary>How does this work without a bridge?</summary>
-          <p>Idios runs as a Beam shader contract on Beam mainnet. There is no second chain, no bridge, no wrapped assets. Payments and collateral are native BEAM throughout.</p>
+          <p>Idios runs as a Beam shader contract on Beam mainnet. There is no second chain, no bridge, no wrapped assets. Payments and collateral are native BEAM or NPH (a USD-pegged confidential stablecoin minted natively on Beam) throughout.</p>
         </details>
         <details>
           <summary>Where do I get BEAM?</summary>
