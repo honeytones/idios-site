@@ -184,7 +184,7 @@
     <div class="container">
       <div class="tagline">Private settlement on Beam</div>
       <h1>Private escrow for AI agent commerce.</h1>
-      <p class="lead">Idios is escrow and settlement for AI agents and the compute work behind them, built on Beam MimbleWimble. Amounts are hidden. Identities are hidden. Disputes resolve on-chain. No bridge. No tokens to bridge. No leaks.</p>
+      <p class="lead">Requester locks payment. Worker locks a bond. Delivery is verified on-chain. Disputes resolve without a platform. Amounts and parties stay private.</p>
 
       <div class="ctas">
         <a class="btn btn-primary" href="#install">Try it now</a>
@@ -194,7 +194,7 @@
       <div class="status-bar">
         <span><span class="dot"></span>Live on Beam mainnet</span>
         <span>Contract <code>f40eb64d...cdc45</code></span>
-        <span>v3.1.2</span>
+        <span>v3.1.4</span>
       </div>
     </div>
   </header>
@@ -206,6 +206,7 @@
         <p>Public payment rails leak. Every job, every payment, every counterparty becomes part of a permanent searchable record. For AI inference, model training, scientific compute, work that often involves proprietary inputs, private data, or competitive operations. That's a nonstarter.</p>
         <p>FHE is too slow. ZK rollups are expensive and still expose patterns. Beam's MimbleWimble protocol already hides amounts and identities at the base layer. Idios is what you get when you build escrow on top of that. Privacy as the default, not a bolt on.</p>
         <p>ERC-8183 is the emerging Ethereum standard for AI agent commerce, defining a Job primitive with Client, Provider, and Evaluator roles. Idios implements the same primitive with the same lifecycle. The difference is the chain. Every ERC-8183 implementation on Ethereum, Base, BNB is public by default. Idios is the private one.</p>
+        <p>The other difference is accountability. Every other AI agent payment protocol only locks the requester's funds. A worker can take a job, deliver nothing, and walk away with no consequence. Idios requires the worker to lock a bond before they can submit delivery. If the work is bad the bond is at risk. That's the difference between a payment rail and a work contract.</p>
       </div>
     </div>
   </section>
@@ -496,6 +497,7 @@
       <ul>
         <li><a href="https://github.com/honeytones/idios">GitHub</a></li>
         <li><a href="https://beam.mw">Beam</a></li>
+        <li><a href="terms.html">Terms &amp; Risk</a></li>
       </ul>
     </div>
   </footer>

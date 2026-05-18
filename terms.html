@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms and Risk Disclosure — Idios</title>
+  <meta name="description" content="Terms of use and risk disclosure for Idios, private escrow for AI agent commerce on Beam." />
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+  <style>
+    :root {
+      --bg:           #0a0a0a;
+      --bg-elev:      #141414;
+      --border:       #2a2a2a;
+      --border-soft:  #1c1c1c;
+      --text:         #e8e8e8;
+      --text-dim:     #888;
+      --text-faint:   #555;
+      --accent:       #e8e8e8;
+      --max:          1100px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); transition: border-color .15s ease; }
+    a:hover { border-color: var(--text); }
+
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-soft);
+    }
+    nav .container { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; }
+    nav .brand { font-weight: 600; letter-spacing: 0.02em; border: none; }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 80px 24px 120px;
+    }
+
+    h1 { font-size: 2.2rem; font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 12px; }
+    h2 { font-size: 1.2rem; font-weight: 600; margin: 48px 0 12px; }
+    p  { margin: 0 0 16px; color: var(--text); }
+    .meta { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border-soft); }
+
+    footer {
+      border-top: 1px solid var(--border-soft);
+      padding: 40px 0;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+    footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    footer a { color: var(--text-dim); border-color: transparent; }
+    footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a class="brand" href="index.html">Idios</a>
+  </div>
+</nav>
+
+<div class="content">
+  <h1>Terms of Use and Risk Disclosure</h1>
+  <p class="meta">Last updated: May 2026</p>
+
+  <h2>No warranties</h2>
+  <p>Idios is experimental software deployed on Beam mainnet. It is provided as-is, with no warranties of any kind, express or implied. Use it at your own risk. The contract has not been formally audited by a third-party security firm.</p>
+
+  <h2>Smart contract risk</h2>
+  <p>Funds locked in the Idios contract are controlled entirely by the contract code. No administrator, developer, or third party can retrieve or reverse a transaction once it is on-chain. If a bug exists in the contract that causes funds to be lost or locked permanently, there is no recovery mechanism. The contract source is open and available for review at <a href="https://github.com/honeytones/idios">github.com/honeytones/idios</a>.</p>
+
+  <h2>Arbitrator risk</h2>
+  <p>Disputed jobs in Mode B are resolved by a single on-chain arbitrator. The arbitrator's decision is final and enforced at the contract level. Today there is one arbitrator. If the arbitrator acts in bad faith, becomes unavailable, or loses access to their key, disputed jobs may not resolve correctly. Multi-arbitrator resolution (M of N) is on the roadmap for Phase 1 and will reduce this trust assumption. Until then, treat the single-arbitrator model accordingly.</p>
+
+  <h2>No insurance</h2>
+  <p>Funds held in Idios escrow are not insured by any protocol, fund, or third party. There is no equivalent of deposit insurance. You can lose the funds you put into escrow if the contract behaves unexpectedly or if you interact with it incorrectly.</p>
+
+  <h2>Asset risk</h2>
+  <p>Idios supports BEAM and NPH. BEAM is the native asset of the Beam network. NPH is a USD-pegged confidential stablecoin minted by the Nephrite protocol on Beam. Neither asset has a centralised issuer with blacklist functions. However, both assets carry the normal risks of cryptocurrency: price volatility (BEAM), smart contract risk in the underlying minting protocol (NPH), and the general risks of the Beam network itself.</p>
+
+  <h2>Beta software</h2>
+  <p>Idios is in active development. The contract, dapp, and daemon may change between versions. While care is taken to maintain backwards compatibility, jobs created on one version may behave differently under a future version if the app shader is updated. Check the <a href="https://github.com/honeytones/idios/releases">release notes</a> before upgrading.</p>
+
+  <h2>No personal data collected</h2>
+  <p>The Idios dapp runs locally inside the Beam Desktop wallet. It does not collect, transmit, or store any personal data. All on-chain interactions are recorded on the Beam blockchain, where amounts and counterparty identities are hidden by the MimbleWimble protocol. The developers of Idios have no visibility into who is using the protocol or for what purpose.</p>
+
+  <h2>Not financial or legal advice</h2>
+  <p>Nothing on this site or in the Idios software constitutes financial, legal, or investment advice. Determine your own compliance obligations before using Idios in a commercial context. Regulations around cryptocurrency escrow, stablecoins, and AI agent commerce vary by jurisdiction and are evolving rapidly.</p>
+
+  <h2>Responsible use</h2>
+  <p>Idios is a neutral protocol. It enforces the terms of a job contract between two parties but has no knowledge of or control over what those parties are actually exchanging. Users are responsible for ensuring their use of Idios complies with applicable laws in their jurisdiction.</p>
+
+</div>
+
+<footer>
+  <div class="container">
+    <span><strong>Idios</strong> Private escrow for AI agent commerce on Beam</span>
+    <span>
+      <a href="index.html">Home</a> &nbsp;·&nbsp;
+      <a href="https://github.com/honeytones/idios">GitHub</a> &nbsp;·&nbsp;
+      <a href="https://beam.mw">Beam</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>
