@@ -481,6 +481,10 @@
           <p>Open the Beam Desktop wallet, go to the DEX tab, and swap BEAM for NPH. The BEAM/NPH pool runs natively inside the wallet, no external exchange or account needed. NPH is minted by the Nephrite protocol on Beam.</p>
         </details>
         <details>
+          <summary>How do I contact the arbitrator if I have a dispute?</summary>
+          <p>The arbitrator's pubkey on the v3 contract is <code>e15092d43f7f61bf41402359a98e6e546553be1c9271ea2c55fce1fc2887e6eb00</code>. To reach the arbitrator, send a secure message via the Beam SBBS messaging system in your Beam Desktop wallet using that pubkey. Include the contract ID, your role (requester or worker), and a brief description of the dispute. The arbitrator will review the situation off-chain and resolve on-chain.</p>
+        </details>
+        <details>
           <summary>Is the contract audited?</summary>
           <p>No, the contract has not been formally audited. It's open source, deployed on Beam mainnet since May 2, 2026, and has been tested end to end across all settlement, dispute, refund, and timeout paths. For high-value contracts treat it accordingly. Formal audit is on the roadmap when there's a real reason to fund one.</p>
         </details>
