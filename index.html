@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Idios. Private escrow for AI agent commerce on Beam</title>
-  <meta name="description" content="Idios is private escrow and settlement for AI agent commerce, built on Beam MimbleWimble. The private equivalent of ERC-8183. Amounts and counterparties hidden by default." />
+  <meta name="description" content="Idios is private escrow for AI agent commerce, built on Beam MimbleWimble. Amounts and counterparties hidden by default. Worker collateral, dispute resolution, and private settlement in one contract." />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Idios. Private escrow for AI agent commerce on Beam" />
-  <meta property="og:description" content="Private escrow for AI agent commerce. The private equivalent of ERC-8183." />
+  <meta property="og:description" content="Private escrow for AI agent commerce on Beam MimbleWimble." />
   <meta property="og:image" content="og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
@@ -205,7 +205,7 @@
       <div style="max-width: 720px;">
         <p>Public payment rails leak. Every contract, every payment, every counterparty becomes part of a permanent searchable record. For AI inference, model training, scientific compute, work that often involves proprietary inputs, private data, or competitive operations. That's a nonstarter.</p>
         <p>FHE is too slow. ZK rollups are expensive and still expose patterns. Beam's MimbleWimble protocol already hides amounts and identities at the base layer. Idios is what you get when you build escrow on top of that. Privacy as the default, not a bolt on.</p>
-        <p>ERC-8183 is the emerging Ethereum standard for AI agent commerce, defining a Job primitive with Client, Provider, and Evaluator roles. Idios implements the same primitive with the same lifecycle. The difference is the chain. Every ERC-8183 implementation on Ethereum, Base, BNB is public by default. Idios is the private one.</p>
+        <p>ERC-8183 is the emerging Ethereum standard for AI agent commerce on Ethereum. Every ERC-8183 implementation is public by default: amounts, parties, and contract history visible on-chain. Idios is a separate and more complete protocol on Beam: private settlement, worker collateral, and working dispute resolution, none of which ERC-8183 has today.</p>
         <p>The other difference is accountability. Every other AI agent payment protocol only locks the requester's funds. A worker can take a contract, deliver nothing, and walk away with no consequence. Idios requires the worker to lock collateral before they can submit delivery. If the work is bad the collateral is at risk. That's the difference between a payment rail and a work contract.</p>
       </div>
     </div>
@@ -334,7 +334,7 @@
       <p style="margin-top: 16px; color: var(--text-faint); font-size: 0.82rem;">
         <sup>1</sup> Disputes resolve via a single on-chain arbitrator today. M of N multi-arbitrator resolution is Phase 1 of the roadmap. Refunds for expired Open contracts are always available to the requester.
         <br><br>
-        <sup>2</sup> Idios uses the same Job lifecycle as ERC-8183 (Open, Funded, Submitted, Terminal). Field names in current contract code are Requester, Worker, Arbitrator, mapping to ERC-8183's Client, Provider, Evaluator. Semantic alignment with ERC-8183 naming is on the roadmap.
+        <sup>2</sup> ERC-8183 defines a similar lifecycle (Open, Funded, Submitted, Terminal). Idios uses Requester, Worker, and Arbitrator. The concepts are analogous but Idios has additional features ERC-8183 does not: worker collateral, working dispute resolution, and private settlement amounts.
       </p>
 
     </div>
@@ -429,7 +429,6 @@
         <ul style="color: var(--text-dim); padding-left: 20px; line-height: 1.8;">
           <li><strong style="color: var(--text);">Phase 0 (shipped):</strong> mainnet v3 contract, dapp v3.1.5 with both Hash-verified and Reviewed settlement modes, four Mode B resolution paths verified end to end on mainnet, BEAM and confidential asset (NPH) payment support, explorer parser, arbitrator console, agent runtime daemon (worker, client, arbitrator roles), in-dapp daemon config export</li>
           <li><strong style="color: var(--text);">Phase 1 (next):</strong> multi-arbitrator dispute resolution (per-contract M of N pubkey sets), removes the single-arbitrator trust assumption for marketplaces and sophisticated users</li>
-          <li><strong style="color: var(--text);">Phase 1.5:</strong> ERC-8183 semantic alignment (Client, Provider, Evaluator naming in contract and dapp UI)</li>
           <li><strong style="color: var(--text);">Phase 2:</strong> IPFS payload delivery and additional confidential assets</li>
           <li><strong style="color: var(--text);">Phase 3:</strong> research direction, programmatic verifiers for specific contract types (partner-driven)</li>
         </ul>
@@ -463,7 +462,7 @@
         </details>
         <details>
           <summary>How does Idios relate to ERC-8183?</summary>
-          <p>ERC-8183 is the Ethereum standard for trustless escrow between AI agents, defining a Job with Client, Provider, and Evaluator roles. Idios implements the same primitive and same contract lifecycle on Beam, where amounts and counterparties are private by default. The current contract uses the names Requester, Worker, and Arbitrator. Semantic alignment with ERC-8183 naming is on the roadmap. The two are compatible designs at the protocol layer, on different chains with different privacy properties.</p>
+          <p>ERC-8183 is a draft Ethereum standard for AI agent escrow. Idios is a separate protocol on Beam with a more complete feature set: worker collateral (ERC-8183 has none), working on-chain dispute resolution (ERC-8183 does not have this yet), and private settlement where amounts and parties are hidden by default (ERC-8183 is fully public). The two address the same problem on different chains with different design choices.</p>
         </details>
         <details>
           <summary>Can my funds be frozen on Idios?</summary>
