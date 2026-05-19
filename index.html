@@ -203,10 +203,10 @@
     <div class="container">
       <h2>Why Idios exists</h2>
       <div style="max-width: 720px;">
-        <p>Public payment rails leak. Every job, every payment, every counterparty becomes part of a permanent searchable record. For AI inference, model training, scientific compute, work that often involves proprietary inputs, private data, or competitive operations. That's a nonstarter.</p>
+        <p>Public payment rails leak. Every contract, every payment, every counterparty becomes part of a permanent searchable record. For AI inference, model training, scientific compute, work that often involves proprietary inputs, private data, or competitive operations. That's a nonstarter.</p>
         <p>FHE is too slow. ZK rollups are expensive and still expose patterns. Beam's MimbleWimble protocol already hides amounts and identities at the base layer. Idios is what you get when you build escrow on top of that. Privacy as the default, not a bolt on.</p>
         <p>ERC-8183 is the emerging Ethereum standard for AI agent commerce, defining a Job primitive with Client, Provider, and Evaluator roles. Idios implements the same primitive with the same lifecycle. The difference is the chain. Every ERC-8183 implementation on Ethereum, Base, BNB is public by default. Idios is the private one.</p>
-        <p>The other difference is accountability. Every other AI agent payment protocol only locks the requester's funds. A worker can take a job, deliver nothing, and walk away with no consequence. Idios requires the worker to lock a bond before they can submit delivery. If the work is bad the bond is at risk. That's the difference between a payment rail and a work contract.</p>
+        <p>The other difference is accountability. Every other AI agent payment protocol only locks the requester's funds. A worker can take a contract, deliver nothing, and walk away with no consequence. Idios requires the worker to lock collateral before they can submit delivery. If the work is bad the collateral is at risk. That's the difference between a payment rail and a work contract.</p>
       </div>
     </div>
   </section>
@@ -225,7 +225,7 @@
         <div class="flow-step">
           <div class="num">02</div>
           <h4>Deliver</h4>
-          <p>Worker performs the job and submits the result hash on-chain.</p>
+          <p>Worker performs the work and submits the result hash on-chain.</p>
         </div>
         <div class="flow-step">
           <div class="num">03</div>
@@ -235,7 +235,7 @@
         <div class="flow-step">
           <div class="num">04</div>
           <h4>Settle</h4>
-          <p>Funds release privately. Disputes go to arbitration. Worker can claim after review timeout. Open jobs refund after expiry.</p>
+          <p>Funds release privately. Disputes go to arbitration. Worker can claim after review timeout. Open contracts refund after expiry.</p>
         </div>
       </div>
 
@@ -332,7 +332,7 @@
       </table>
 
       <p style="margin-top: 16px; color: var(--text-faint); font-size: 0.82rem;">
-        <sup>1</sup> Disputes resolve via a single on-chain arbitrator today. M of N multi-arbitrator resolution is Phase 1 of the roadmap. Refunds for expired Open jobs are always available to the requester.
+        <sup>1</sup> Disputes resolve via a single on-chain arbitrator today. M of N multi-arbitrator resolution is Phase 1 of the roadmap. Refunds for expired Open contracts are always available to the requester.
         <br><br>
         <sup>2</sup> Idios uses the same Job lifecycle as ERC-8183 (Open, Funded, Submitted, Terminal). Field names in current contract code are Requester, Worker, Arbitrator, mapping to ERC-8183's Client, Provider, Evaluator. Semantic alignment with ERC-8183 naming is on the roadmap.
       </p>
@@ -343,7 +343,7 @@
   <section id="live">
     <div class="container">
       <h2>Live on mainnet</h2>
-      <p class="lead">Every job, every settlement, every refund. Visible and parsed on the Beam explorer.</p>
+      <p class="lead">Every contract, every settlement, every refund. Visible and parsed on the Beam explorer.</p>
 
       <div class="grid-3" style="margin-top: 32px;">
         <div class="card">
@@ -385,7 +385,7 @@
         </div>
       </div>
 
-      <img src="dapp-automate-modal.png" alt="The Automate this job modal in the Idios dapp, showing the daemon config generator with role selector and live JSON preview" style="margin-top: 40px; width: 100%; max-width: 720px; display: block; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
+      <img src="dapp-automate-modal.png" alt="The Automate this contract modal in the Idios dapp, showing the daemon config generator with role selector and live JSON preview" style="margin-top: 40px; width: 100%; max-width: 720px; display: block; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);" />
     </div>
   </section>
 
@@ -455,15 +455,15 @@
         </details>
         <details>
           <summary>What assets can I pay in?</summary>
-          <p>BEAM (the native asset) or NPH. NPH is a USD-pegged confidential stablecoin minted by the Nephrite protocol on Beam. It gives you the price stability of a stablecoin while keeping amounts and counterparties private at the protocol level. Both assets share the same confidentiality properties, neither has a central issuer that can freeze addresses, and both are usable in any Idios job.</p>
+          <p>BEAM (the native asset) or NPH. NPH is a USD-pegged confidential stablecoin minted by the Nephrite protocol on Beam. It gives you the price stability of a stablecoin while keeping amounts and counterparties private at the protocol level. Both assets share the same confidentiality properties, neither has a central issuer that can freeze addresses, and both are usable in any Idios contract.</p>
         </details>
         <details>
           <summary>Is this trustless?</summary>
-          <p>Partially. Mode A is fully trustless: settlement requires a hash match, no third party can intervene. Mode B introduces an on-chain arbitrator who can resolve disputes if the requester and worker disagree. Today there is a single arbitrator. Phase 1 introduces M of N multi-arbitrator resolution which removes the single point of trust. Refunds for expired Open jobs are always available without arbitrator involvement.</p>
+          <p>Partially. Mode A is fully trustless: settlement requires a hash match, no third party can intervene. Mode B introduces an on-chain arbitrator who can resolve disputes if the requester and worker disagree. Today there is a single arbitrator. Phase 1 introduces M of N multi-arbitrator resolution which removes the single point of trust. Refunds for expired Open contracts are always available without arbitrator involvement.</p>
         </details>
         <details>
           <summary>How does Idios relate to ERC-8183?</summary>
-          <p>ERC-8183 is the Ethereum standard for trustless escrow between AI agents, defining a Job with Client, Provider, and Evaluator roles. Idios implements the same primitive and same job lifecycle on Beam, where amounts and counterparties are private by default. The current contract uses the names Requester, Worker, and Arbitrator. Semantic alignment with ERC-8183 naming is on the roadmap. The two are compatible designs at the protocol layer, on different chains with different privacy properties.</p>
+          <p>ERC-8183 is the Ethereum standard for trustless escrow between AI agents, defining a Job with Client, Provider, and Evaluator roles. Idios implements the same primitive and same contract lifecycle on Beam, where amounts and counterparties are private by default. The current contract uses the names Requester, Worker, and Arbitrator. Semantic alignment with ERC-8183 naming is on the roadmap. The two are compatible designs at the protocol layer, on different chains with different privacy properties.</p>
         </details>
         <details>
           <summary>Can my funds be frozen on Idios?</summary>
@@ -483,7 +483,7 @@
         </details>
         <details>
           <summary>Is the contract audited?</summary>
-          <p>No, the contract has not been formally audited. It's open source, deployed on Beam mainnet since May 2, 2026, and has been tested end to end across all settlement, dispute, refund, and timeout paths. For high-value jobs treat it accordingly. Formal audit is on the roadmap when there's a real reason to fund one.</p>
+          <p>No, the contract has not been formally audited. It's open source, deployed on Beam mainnet since May 2, 2026, and has been tested end to end across all settlement, dispute, refund, and timeout paths. For high-value contracts treat it accordingly. Formal audit is on the roadmap when there's a real reason to fund one.</p>
         </details>
       </div>
     </div>
