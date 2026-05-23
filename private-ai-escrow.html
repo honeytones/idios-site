@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Private Escrow for AI Work and Crypto Payments | Idios</title>
+  <meta name="description" content="Idios is private crypto escrow for AI compute, model training, freelance work, and agent payments. Both sides lock funds. Delivery verified on-chain. Amounts and parties stay private by default. No platform fees. No KYC." />
+  <meta name="keywords" content="private crypto escrow, AI escrow, anonymous crypto payment, decentralized escrow no KYC, AI agent payment, private blockchain escrow, confidential AI commerce, crypto freelance escrow, GPU compute escrow, private smart contract escrow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Private Escrow for AI Work and Crypto Payments | Idios" />
+  <meta property="og:description" content="Both sides lock funds. Delivery verified on-chain. Amounts and parties stay private. No platform fees. No KYC." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <style>
+    :root {
+      --bg:           #0a0a0a;
+      --bg-elev:      #141414;
+      --border:       #2a2a2a;
+      --border-soft:  #1c1c1c;
+      --text:         #e8e8e8;
+      --text-dim:     #888;
+      --text-faint:   #555;
+      --accent:       #e8e8e8;
+      --max:          1100px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); transition: border-color .15s ease; }
+    a:hover { border-color: var(--text); }
+    code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 0.9em; background: var(--bg-elev); padding: 2px 6px; border-radius: 3px; border: 1px solid var(--border-soft); }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-soft);
+    }
+    nav .container { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; }
+    nav .brand { font-weight: 600; letter-spacing: 0.02em; border: none; }
+    nav ul { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; }
+    nav ul a { border: none; color: var(--text-dim); font-size: 0.92rem; }
+    nav ul a:hover { color: var(--text); }
+    section { padding: 96px 0; border-bottom: 1px solid var(--border-soft); }
+    section:last-of-type { border-bottom: none; }
+    h1, h2, h3 { line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 24px; }
+    h1 { font-size: 3rem; font-weight: 600; }
+    h2 { font-size: 2rem; font-weight: 600; margin-bottom: 32px; }
+    h3 { font-size: 1.15rem; font-weight: 600; }
+    p { margin: 0 0 16px; color: var(--text); }
+    .lead { font-size: 1.2rem; color: var(--text-dim); max-width: 640px; }
+    .hero { padding: 128px 0 96px; text-align: center; }
+    .hero .container { display: flex; flex-direction: column; align-items: center; }
+    .hero .tagline { color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.8rem; margin-bottom: 24px; }
+    .hero .lead { margin-left: auto; margin-right: auto; }
+    .hero .ctas { display: flex; gap: 16px; margin-top: 40px; flex-wrap: wrap; justify-content: center; }
+    .btn { display: inline-block; padding: 14px 28px; border: 1px solid var(--text); color: var(--text); font-weight: 500; transition: background .15s ease, color .15s ease; }
+    .btn-primary { background: var(--text); color: var(--bg); }
+    .btn-primary:hover { background: transparent; color: var(--text); }
+    .btn-secondary:hover { background: var(--text); color: var(--bg); }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .card { padding: 28px; border: 1px solid var(--border); background: var(--bg-elev); transition: border-color .15s ease, transform .15s ease; }
+    .card:hover { border-color: var(--text); transform: translateY(-2px); }
+    .card h3 { margin-bottom: 12px; }
+    .card p { color: var(--text-dim); font-size: 0.95rem; margin: 0; }
+    .card .tag { display: inline-block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-faint); border: 1px solid var(--border); padding: 3px 8px; margin-bottom: 14px; }
+    .problem-box { padding: 32px; border: 1px solid var(--border); background: var(--bg-elev); margin-bottom: 24px; }
+    .problem-box .label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-faint); margin-bottom: 12px; }
+    .problem-box h3 { margin-bottom: 8px; }
+    .problem-box p { color: var(--text-dim); font-size: 0.95rem; margin: 0 0 12px; }
+    .problem-box .solution { color: var(--text); font-size: 0.95rem; padding-top: 12px; border-top: 1px solid var(--border-soft); }
+    .flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 40px 0; }
+    .flow-step { padding: 24px 20px; border: 1px solid var(--border); text-align: center; }
+    .flow-step .num { color: var(--text-faint); font-size: 0.75rem; letter-spacing: 0.15em; }
+    .flow-step h4 { margin: 8px 0 4px; font-size: 1rem; font-weight: 600; }
+    .flow-step p { color: var(--text-dim); font-size: 0.85rem; margin: 0; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px; }
+    .step .num { color: var(--text-faint); font-size: 0.75rem; letter-spacing: 0.15em; margin-bottom: 12px; }
+    .step h4 { margin: 0 0 8px; font-size: 1rem; }
+    .step p { color: var(--text-dim); font-size: 0.92rem; margin: 0; }
+    .faq details { padding: 20px 0; border-bottom: 1px solid var(--border-soft); }
+    .faq details:last-of-type { border-bottom: none; }
+    .faq summary { cursor: pointer; font-weight: 500; list-style: none; padding-right: 24px; position: relative; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; position: absolute; right: 0; top: 0; color: var(--text-dim); font-size: 1.2rem; }
+    .faq details[open] summary::after { content: "X"; }
+    .faq details p { margin-top: 12px; color: var(--text-dim); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
+    footer { padding: 48px 0 64px; color: var(--text-dim); font-size: 0.9rem; }
+    footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    footer ul { list-style: none; padding: 0; margin: 0; display: flex; gap: 24px; }
+    @media (max-width: 800px) {
+      h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.6rem; }
+      .grid-3, .flow, .steps, .contact-grid { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      nav ul { display: none; }
+      section { padding: 64px 0; }
+      .hero { padding: 80px 0 64px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <a href="index.html" class="brand">Idios</a>
+      <ul>
+        <li><a href="#problems">Use cases</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#install">Get started</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="index.html">Full site</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="container">
+      <div class="tagline">Private settlement on Beam</div>
+      <h1>Private escrow for AI work, compute, and crypto payments.</h1>
+      <p class="lead">Both sides lock funds before work starts. Delivery is verified on-chain. Disputes resolve without a platform. Amounts and parties stay private by default. No KYC. No platform fees. No middleman.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="#install">Get started</a>
+        <a class="btn btn-secondary" href="index.html">Learn more</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="problems">
+    <div class="container">
+      <h2>Real problems Idios solves</h2>
+      <p class="lead" style="margin-bottom: 48px;">Every one of these is a situation where someone is carrying all the risk. Idios changes that.</p>
+
+      <div class="problem-box">
+        <div class="label">AI compute and GPU rental</div>
+        <h3>You need GPU compute. You don't know if the provider will deliver.</h3>
+        <p>Decentralized GPU marketplaces (Akash, Render, Vast.ai) connect you with compute providers worldwide. But you either pay upfront and hope they deliver, or the provider runs the job and hopes you pay. One side always carries the risk.</p>
+        <div class="solution">With Idios: the requester locks payment, the compute provider locks collateral. If the job produces the agreed output (verified by hash), funds release automatically. If not, the provider loses collateral. Neither side can walk away free.</div>
+      </div>
+
+      <div class="problem-box">
+        <div class="label">AI agent to agent payments</div>
+        <h3>Your AI agents need to pay other agents for services. Everything is public.</h3>
+        <p>x402 and similar protocols let agents pay for services on-chain. But every transaction, every amount, every agent identity is permanently public on Ethereum, Solana, or Base. For commercial AI operations, that is a competitive intelligence leak.</p>
+        <div class="solution">With Idios: agent payments settle on Beam MimbleWimble. Amounts and counterparties are hidden at the protocol level. Not a mixer, not a rollup. Private by default, built into the base layer.</div>
+      </div>
+
+      <div class="problem-box">
+        <div class="label">AI freelance and custom model work</div>
+        <h3>You need custom AI work done. You have no guarantee the developer delivers.</h3>
+        <p>Crypto freelance platforms (CryptoTask, LaborX) use smart contract escrow but only lock the buyer's funds. The developer can take the contract, deliver nothing, and their only consequence is a bad rating. For high-value AI work like fine-tuning, custom agents, or LLM integrations, that is not good enough.</p>
+        <div class="solution">With Idios: the worker locks collateral before they can submit delivery. If the work is bad and the dispute goes against them, they lose the collateral. A developer with real money at risk has a real reason to deliver.</div>
+      </div>
+
+      <div class="problem-box">
+        <div class="label">Model and dataset sales</div>
+        <h3>You want to sell a trained model or dataset. You want payment before you hand it over.</h3>
+        <p>The classic standoff: buyer won't pay until they have the file, seller won't send the file until they're paid. With traditional escrow a platform holds the funds and takes a cut. With crypto you're back to trusting a stranger.</p>
+        <div class="solution">With Idios Mode A: the buyer locks payment, the seller locks collateral, the buyer puts the expected file hash into the contract. The seller submits the hash on-chain. If it matches, funds release automatically. No one clicks approve. No platform takes a cut.</div>
+      </div>
+
+      <div class="problem-box">
+        <div class="label">Sensitive and private work</div>
+        <h3>Your work involves proprietary data. You can't have it on a public ledger.</h3>
+        <p>Paying for AI inference on proprietary inputs, scientific simulations with confidential data, or model training on private datasets, puts your business on a permanent public record on most blockchains. Competitors can see what you're building and who you're paying.</p>
+        <div class="solution">With Idios: nothing about the work touches the blockchain except the settlement. Amounts, parties, and contract history are hidden by Beam's MimbleWimble protocol. The work itself is exchanged off-chain however you agree.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="container">
+      <h2>How it works</h2>
+      <p class="lead">Four steps. No bridge. No middleman holding your funds.</p>
+      <div class="flow">
+        <div class="flow-step">
+          <div class="num">01</div>
+          <h4>Lock</h4>
+          <p>Requester locks payment. Worker locks collateral. Both sides have skin in the game before work starts.</p>
+        </div>
+        <div class="flow-step">
+          <div class="num">02</div>
+          <h4>Deliver</h4>
+          <p>Worker does the work and submits the result hash on-chain. The actual work is exchanged off-chain.</p>
+        </div>
+        <div class="flow-step">
+          <div class="num">03</div>
+          <h4>Verify</h4>
+          <p>Hash-verified: auto-settles on match. Reviewed: requester approves or disputes within the review window.</p>
+        </div>
+        <div class="flow-step">
+          <div class="num">04</div>
+          <h4>Settle</h4>
+          <p>Funds release privately. Disputes go to arbitration. Neither side can disappear without consequence.</p>
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top: 48px;">
+        <div class="card">
+          <h3>Worker collateral</h3>
+          <p>The worker locks collateral before they can deliver. If the dispute goes against them, they lose it. No other crypto escrow protocol does this.</p>
+        </div>
+        <div class="card">
+          <h3>Private by default</h3>
+          <p>Beam's MimbleWimble protocol hides amounts and identities at the base layer. No mixer, no rollup, no extra steps required.</p>
+        </div>
+        <div class="card">
+          <h3>No platform fees</h3>
+          <p>Idios takes nothing. You pay only the standard Beam network fee, roughly 0.021 BEAM per action, less than a cent.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="usecases">
+    <div class="container">
+      <h2>What kind of work can be settled on Idios</h2>
+      <p class="lead" style="margin-bottom: 40px;">If you can describe the deliverable, you can escrow it.</p>
+      <div class="grid-3">
+        <div class="card">
+          <div class="tag">AI compute</div>
+          <h3>GPU and inference jobs</h3>
+          <p>Rent compute from decentralized providers with both sides locked in. If the job produces the wrong output, the provider loses collateral.</p>
+        </div>
+        <div class="card">
+          <div class="tag">AI agents</div>
+          <h3>Agent to agent payments</h3>
+          <p>Autonomous agents paying for tools, data, and services privately. No public record of what your agents are doing or who they are paying.</p>
+        </div>
+        <div class="card">
+          <div class="tag">Model sales</div>
+          <h3>Trained models and datasets</h3>
+          <p>Sell a fine-tuned model or proprietary dataset with hash-verified settlement. Funds release automatically when the file hash matches.</p>
+        </div>
+        <div class="card">
+          <div class="tag">Freelance AI</div>
+          <h3>Custom AI development</h3>
+          <p>Custom agents, LLM integrations, automation pipelines. Worker puts up collateral. Requester can dispute. Arbitrator resolves on-chain.</p>
+        </div>
+        <div class="card">
+          <div class="tag">Data work</div>
+          <h3>Labelling and annotation</h3>
+          <p>Pay annotators and data labellers privately. Worker stake means quality matters to them financially, not just reputationally.</p>
+        </div>
+        <div class="card">
+          <div class="tag">Research compute</div>
+          <h3>Scientific simulations</h3>
+          <p>Commission compute-intensive research work with confidential inputs. Nothing about the job appears on a public ledger.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="install">
+    <div class="container">
+      <h2>Get started in three steps</h2>
+      <p class="lead">Idios runs as a dapp inside the free Beam Desktop wallet. No account, no KYC, no signup.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="num">STEP 01</div>
+          <h4>Download Beam Desktop</h4>
+          <p>Get the free Beam wallet from <a href="https://www.beam.mw/">beam.mw</a>. It is available for Windows, Mac, and Linux. This is where Idios runs.</p>
+        </div>
+        <div class="step">
+          <div class="num">STEP 02</div>
+          <h4>Download idios.dapp</h4>
+          <p>Grab the latest <code>.dapp</code> file from the <a href="https://github.com/honeytones/idios/releases">GitHub releases page</a>. This is the Idios application file.</p>
+        </div>
+        <div class="step">
+          <div class="num">STEP 03</div>
+          <h4>Install and open</h4>
+          <p>In Beam Desktop, go to Applications, then Install from file, and select the <code>idios.dapp</code> file. Idios opens inside the wallet. You are ready to create or accept a contract.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 48px; padding: 28px; border: 1px solid var(--border); background: var(--bg-elev);">
+        <h3 style="margin-bottom: 8px;">Need BEAM to get started?</h3>
+        <p style="color: var(--text-dim); margin-bottom: 16px;">You need a small amount of BEAM to cover network fees (roughly 0.021 BEAM per contract action, less than a cent). Payment can be in BEAM or NPH, a USD-pegged confidential stablecoin available inside the Beam wallet DEX.</p>
+        <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+          <a href="https://www.beam.mw/">Get BEAM via beam.mw</a>
+          <a href="https://buybeam.my/">Fast swap at buybeam.my (ETH to BEAM, no account needed)</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="container">
+      <h2>Common questions</h2>
+      <div class="faq">
+        <details>
+          <summary>Do I need to know anything about blockchain to use this?</summary>
+          <p>You need a Beam Desktop wallet and a small amount of BEAM for fees. The Idios dapp guides you through creating a contract step by step. You do not need to understand smart contracts, write any code, or interact with a command line.</p>
+        </details>
+        <details>
+          <summary>Why is it private? How does that work?</summary>
+          <p>Idios is built on Beam, which uses the MimbleWimble protocol. MimbleWimble hides transaction amounts and the identities of the sender and receiver at the base layer of the blockchain. This is not a mixer or an add-on. Privacy is built into the protocol itself. No one watching the Beam blockchain can see what you paid, who you paid, or how much collateral was locked.</p>
+        </details>
+        <details>
+          <summary>What if the worker delivers bad work?</summary>
+          <p>In Reviewed settlement (Mode B), you have a review window to approve or dispute after the worker submits delivery. If you dispute, an arbitrator reviews the situation off-chain and resolves on-chain. If the arbitrator sides with you, you get your payment back plus the worker's collateral plus your dispute fee. If the arbitrator sides with the worker, they receive the full amount including your dispute fee. The arbitrator's decision is final and enforced by the contract.</p>
+        </details>
+        <details>
+          <summary>What if I pay for AI compute and the output is wrong?</summary>
+          <p>For hash-verified work (Mode A), the contract only releases payment if the delivered hash matches the hash you locked in at the start. If the compute provider delivers a different result, the hash does not match, the contract does not settle, and the provider loses their collateral. For non-deterministic work where an exact hash is not known in advance, use Reviewed settlement and specify the acceptance criteria off-chain before creating the contract.</p>
+        </details>
+        <details>
+          <summary>What is NPH and do I need it?</summary>
+          <p>NPH is a USD-pegged confidential stablecoin minted by the Nephrite protocol on Beam. You can use it instead of BEAM for contract payments if you want price stability. You get NPH by swapping BEAM for it inside the Beam Desktop wallet via the DEX tab. No external exchange needed. You do not need NPH to use Idios, BEAM works fine.</p>
+        </details>
+        <details>
+          <summary>Can my funds be frozen?</summary>
+          <p>No. Idios uses BEAM and NPH. Neither asset has a central issuer with blacklist functions. Compare this to USDC and USDT where the issuers can and do freeze addresses. Your funds in an Idios contract cannot be frozen by any third party.</p>
+        </details>
+        <details>
+          <summary>Is there a fee?</summary>
+          <p>Idios takes no fee. You pay only the standard Beam network transaction fee, roughly 0.021 BEAM per action. At current prices that is less than a cent per contract action.</p>
+        </details>
+        <details>
+          <summary>Can I automate this for high-volume work?</summary>
+          <p>Yes. The Idios agent daemon is a Python program that automates the worker, client, or arbitrator role in a contract. It polls the chain, watches your contracts, and fires the right action when the state changes. It supports batch creation of up to 50 contracts in a single transaction for high-volume operators. See the <a href="https://github.com/honeytones/idios/tree/main/idios-agent-daemon">daemon documentation</a> for details.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2>Get in touch</h2>
+      <p class="lead">Questions about using Idios, integrating it into your platform, or filing a dispute.</p>
+      <div class="contact-grid">
+        <div class="card">
+          <h3>Telegram</h3>
+          <p>Reach the Idios maintainer and arbitrator on Telegram. Best for dispute notifications and integration questions.</p>
+          <p style="margin-top: 16px;"><a href="https://t.me/tappyoak">@tappyoak</a></p>
+        </div>
+        <div class="card">
+          <h3>Discord</h3>
+          <p>Find us on Discord for questions, support, and updates about Idios development.</p>
+          <p style="margin-top: 16px;"><a href="https://discord.com/users/tappyoak">@tappyoak</a></p>
+        </div>
+      </div>
+      <div style="margin-top: 32px; padding: 28px; border: 1px solid var(--border); background: var(--bg-elev);">
+        <h3 style="margin-bottom: 8px;">For developers and integrators</h3>
+        <p style="color: var(--text-dim); margin: 0;">The full source, contract methods, architecture notes, and roadmap are on <a href="https://github.com/honeytones/idios">GitHub</a>. The live contract has been on Beam mainnet since May 2, 2026 and has been tested end to end across all settlement, dispute, refund, and timeout paths.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div><strong>Idios</strong> Private escrow for AI work and crypto payments on Beam</div>
+      <ul>
+        <li><a href="index.html">Main site</a></li>
+        <li><a href="https://github.com/honeytones/idios">GitHub</a></li>
+        <li><a href="https://beam.mw">Beam</a></li>
+        <li><a href="terms.html">Terms and Risk</a></li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>
