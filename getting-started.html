@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting Started with Idios | Private Escrow for AI Work on Beam</title>
+  <meta name="description" content="Step by step guide to using Idios private escrow on Beam. Find a worker, create a contract, lock funds, deliver, settle privately. Mode A and Mode B explained with real examples." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-elev: #141414;
+      --border: #2a2a2a;
+      --border-soft: #1c1c1c;
+      --text: #e8e8e8;
+      --text-dim: #888;
+      --text-faint: #555;
+      --max: 800px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--text); border-bottom: 1px solid var(--border); text-decoration: none; transition: border-color .15s; }
+    a:hover { border-color: var(--text); }
+    code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 0.88em; background: var(--bg-elev); padding: 2px 6px; border-radius: 3px; border: 1px solid var(--border-soft); }
+    pre { background: var(--bg-elev); padding: 16px 20px; border-radius: 4px; border: 1px solid var(--border-soft); overflow-x: auto; }
+    pre code { background: none; border: none; padding: 0; }
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(10,10,10,0.9);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-soft);
+    }
+    nav .inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; max-width: 1100px; margin: 0 auto; }
+    nav .brand { font-weight: 600; font-size: 1.1rem; border: none; }
+    nav ul { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; }
+    nav ul a { border: none; color: var(--text-dim); font-size: 0.9rem; }
+    nav ul a:hover { color: var(--text); }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    .hero { padding: 72px 0 48px; border-bottom: 1px solid var(--border-soft); }
+    .hero .label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-faint); margin-bottom: 16px; }
+    .hero h1 { font-size: 2.4rem; font-weight: 600; margin: 0 0 16px; line-height: 1.2; letter-spacing: -0.01em; }
+    .hero p { color: var(--text-dim); font-size: 1.1rem; margin: 0; max-width: 600px; }
+    .toc { margin: 48px 0; padding: 24px; border: 1px solid var(--border); background: var(--bg-elev); }
+    .toc h3 { margin: 0 0 16px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-faint); }
+    .toc ol { margin: 0; padding-left: 20px; }
+    .toc li { margin-bottom: 6px; }
+    .toc a { color: var(--text-dim); font-size: 0.95rem; border-bottom: none; }
+    .toc a:hover { color: var(--text); }
+    .content { padding: 48px 0 96px; }
+    h2 { font-size: 1.7rem; font-weight: 600; margin: 64px 0 20px; letter-spacing: -0.01em; padding-top: 16px; border-top: 1px solid var(--border-soft); }
+    h2:first-child { border-top: none; margin-top: 0; }
+    h3 { font-size: 1.15rem; font-weight: 600; margin: 36px 0 12px; }
+    p { margin: 0 0 16px; }
+    ul, ol { padding-left: 24px; margin: 0 0 16px; }
+    li { margin-bottom: 8px; color: var(--text); }
+    .callout { padding: 20px 24px; border-left: 2px solid var(--text); background: var(--bg-elev); margin: 28px 0; font-size: 0.95rem; color: var(--text-dim); }
+    .callout strong { color: var(--text); }
+    .step-block { padding: 24px; border: 1px solid var(--border); background: var(--bg-elev); margin: 20px 0; }
+    .step-block .step-num { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-faint); margin-bottom: 8px; }
+    .step-block h4 { margin: 0 0 10px; font-size: 1.05rem; }
+    .step-block p { margin: 0; color: var(--text-dim); font-size: 0.95rem; }
+    table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.92rem; }
+    th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border-soft); }
+    th { color: var(--text-faint); font-weight: 500; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; }
+    .faq dt { font-weight: 600; margin: 28px 0 6px; }
+    .faq dd { margin: 0 0 0 0; color: var(--text-dim); }
+    .resolve-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+    .resolve-card { padding: 20px; border: 1px solid var(--border); }
+    .resolve-card .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-faint); margin-bottom: 8px; }
+    .resolve-card h4 { margin: 0 0 8px; font-size: 0.95rem; }
+    .resolve-card p { margin: 0; color: var(--text-dim); font-size: 0.88rem; }
+    footer { padding: 40px 0 56px; border-top: 1px solid var(--border-soft); color: var(--text-dim); font-size: 0.88rem; }
+    footer .inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    footer ul { list-style: none; padding: 0; margin: 0; display: flex; gap: 20px; }
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 1.8rem; }
+      .resolve-grid { grid-template-columns: 1fr; }
+      nav ul { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a href="index.html" class="brand">Idios</a>
+    <ul>
+      <li><a href="index.html#how">How it works</a></li>
+      <li><a href="index.html#install">Install</a></li>
+      <li><a href="https://honeytones.github.io/idios-market/">Marketplace</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="hero">
+    <div class="label">Guide</div>
+    <h1>Getting started with Idios</h1>
+    <p>Private escrow on Beam. Both sides lock funds before work begins. Delivery is verified on-chain. Disputes resolve without a platform. Amounts and parties stay private.</p>
+  </div>
+
+  <div class="toc">
+    <h3>Contents</h3>
+    <ol>
+      <li><a href="#before-you-start">What you need before you start</a></li>
+      <li><a href="#find-a-worker">Finding a worker via Idios Market</a></li>
+      <li><a href="#contract-types">The two contract types</a></li>
+      <li><a href="#mode-b">Mode B: Reviewed settlement, start to finish</a></li>
+      <li><a href="#mode-a">Mode A: Hash-verified settlement, start to finish</a></li>
+      <li><a href="#collateral">The collateral and why it matters</a></li>
+      <li><a href="#reference">Quick reference</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
+    </ol>
+  </div>
+
+  <div class="content">
+
+    <h2 id="before-you-start">What you need before you start</h2>
+
+    <p>Before you can create or accept a contract on Idios you need three things:</p>
+
+    <ul>
+      <li><strong>Beam Desktop wallet</strong> installed from <a href="https://www.beam.mw/">beam.mw</a>. This is the wallet Idios runs inside. Available for Windows, Mac, and Linux.</li>
+      <li><strong>Idios dapp installed</strong> in the wallet. Download the latest <code>.dapp</code> file from the <a href="https://github.com/honeytones/idios/releases">GitHub releases page</a>, then in Beam Desktop go to Applications, Install from file, and select the file.</li>
+      <li><strong>BEAM or NPH in your wallet.</strong> You need a small amount of BEAM to cover network fees (roughly 0.021 BEAM per contract action). Contract payments can be in BEAM or NPH. NPH is a USD-pegged confidential stablecoin available via the DEX tab inside Beam Desktop. See <a href="index.html#getbeam">where to get BEAM</a> if you need it.</li>
+    </ul>
+
+    <div class="callout">
+      <strong>Your Beam pubkey.</strong> When you open the Idios dapp it shows your public key on the landing page. This is the key the other party needs to create a contract with you. Copy it and share it with whoever you are working with before any contract is created. It looks like a long hex string, e.g. <code>66a94247...bd601</code>.
+    </div>
+
+    <h2 id="find-a-worker">Finding a worker via Idios Market</h2>
+
+    <p>If you do not already have a counterparty, <a href="https://honeytones.github.io/idios-market/">Idios Market</a> is where workers list themselves and clients post jobs.</p>
+
+    <div class="step-block">
+      <div class="step-num">For clients looking for a worker</div>
+      <h4>Browse the Workers tab</h4>
+      <p>Find someone with the skills you need. Their card shows their skills, rate, availability, and contact handle. Reach out via Telegram or Discord to discuss the work. Once you agree on terms, ask them for their Beam pubkey from the Idios dapp. You will need it to create the contract.</p>
+    </div>
+
+    <div class="step-block">
+      <div class="step-num">For workers looking for clients</div>
+      <h4>List yourself or browse jobs</h4>
+      <p>Click List yourself as a worker and fill in your skills, rate, and contact. Your Beam pubkey goes in the listing so clients can find it. Or browse the Jobs tab for posted work that matches your skills and reach out to the client directly.</p>
+    </div>
+
+    <p>Everything up to this point is off-chain. The marketplace is just a directory. No funds are involved until you create a contract in the Idios dapp.</p>
+
+    <h2 id="contract-types">The two contract types</h2>
+
+    <p>Idios has two settlement modes. You choose when creating the contract.</p>
+
+    <div class="step-block">
+      <div class="step-num">Mode B</div>
+      <h4>Reviewed settlement</h4>
+      <p>The requester locks payment. The worker commits collateral. They deliver the work. The requester reviews it and approves. Funds release privately. If the requester disputes, an arbitrator decides. Best for any work where a human needs to judge the outcome: custom AI agents, automation systems, LLM integrations, consulting, data labelling.</p>
+    </div>
+
+    <div class="step-block">
+      <div class="step-num">Mode A</div>
+      <h4>Hash-verified settlement</h4>
+      <p>The requester locks payment and locks the expected output hash into the contract at creation time. The worker commits collateral. They deliver the exact output agreed on before the contract started. If the delivery hash matches, funds release automatically. No one clicks anything. Best for deterministic outputs: a fine-tuned model with a known checksum, a specific dataset, an AI agent delivering a pre-agreed result.</p>
+    </div>
+
+    <h2 id="mode-b">Mode B: Reviewed settlement, start to finish</h2>
+
+    <h3>The scenario</h3>
+
+    <p>A company called NovaCRM wants to automate their sales outreach. They need a custom AI agent built in Python using LangChain and the GPT-4 API. The agent should qualify inbound leads from their CRM, draft personalised follow-up emails, and log outcomes back to the database.</p>
+
+    <p>They find a freelance AI developer named Priya on Idios Market. They agree on 2 NPH payment. Priya will put up 1 NPH as collateral. The full project scope is documented in a brief they exchange off-chain via Telegram.</p>
+
+    <p>NovaCRM does not want this project visible on-chain. A competitor seeing they are building AI sales automation before launch would be a problem. Priya does not want her client list public.</p>
+
+    <h3>Step 1: NovaCRM creates the contract</h3>
+
+    <p>Priya sends NovaCRM her Beam pubkey from the Idios dapp landing page. NovaCRM opens Idios, clicks <strong>Start a contract</strong>, and fills in:</p>
+
+    <ul>
+      <li><strong>Contract ID:</strong> any number they choose, e.g. 88801</li>
+      <li><strong>Settlement type:</strong> Reviewed (Mode B)</li>
+      <li><strong>Payment:</strong> 2 NPH</li>
+      <li><strong>Payment asset:</strong> NPH</li>
+      <li><strong>Priya's pubkey:</strong> the key Priya sent them</li>
+      <li><strong>Expiry block:</strong> current block + 20,000 (about two weeks)</li>
+      <li><strong>Review window:</strong> 2,000 blocks (about 33 hours to approve or dispute after delivery)</li>
+      <li><strong>Dispute fee:</strong> 0.1 NPH (locked if NovaCRM disputes, returned if arbitrator sides with them)</li>
+    </ul>
+
+    <p>NovaCRM clicks <strong>Create Contract</strong>. Their wallet asks them to confirm locking 2 NPH. They confirm. The contract is on-chain. Their payment is locked. Priya can see the contract exists and the terms.</p>
+
+    <div class="callout">
+      The work brief itself is shared off-chain via whatever the two parties agree on: Telegram, email, a shared document. Idios stores no free-text descriptions on chain. This is deliberate: nothing about the project leaks.
+    </div>
+
+    <h3>Step 2: Priya commits her collateral</h3>
+
+    <p>NovaCRM shares the contract ID (88801) with Priya off-chain. Priya opens Idios, goes to <strong>My Contracts</strong>, and adds contract 88801 as worker. She clicks <strong>Commit</strong>, locking her 1 NPH collateral.</p>
+
+    <p>Both sides now have skin in the game. Priya cannot walk away without losing her collateral. NovaCRM cannot disappear with Priya's time for free.</p>
+
+    <h3>Step 3: Priya builds the agent and delivers</h3>
+
+    <p>Priya spends a week building the agent. The final deliverable is a ZIP file containing the full codebase, a README, and a deployment guide.</p>
+
+    <p>She generates the hash of her ZIP before submitting:</p>
+
+    <pre><code>sha256sum novacrm_agent_88801.zip</code></pre>
+
+    <p>Output: <code>f29a4c81...7e02</code></p>
+
+    <p>She pastes that hash into Idios and clicks <strong>Submit Delivery</strong>. The contract status moves to <strong>Awaiting Approval</strong>.</p>
+
+    <p>Priya then sends the actual ZIP to NovaCRM however they agreed. The code never touches the blockchain.</p>
+
+    <h3>Step 4: NovaCRM reviews and approves</h3>
+
+    <p>NovaCRM downloads the ZIP, deploys the agent in a test environment, verifies it works, then opens Idios and clicks <strong>Approve Delivery</strong>.</p>
+
+    <p>The contract moves to Settled. Priya clicks <strong>Claim Funds</strong> and receives 2 NPH payment plus her 1 NPH collateral back. Total: 3 NPH. Both balances update privately on-chain.</p>
+
+    <h3>The four ways a Mode B contract can resolve</h3>
+
+    <div class="resolve-grid">
+      <div class="resolve-card">
+        <div class="label">Path 1</div>
+        <h4>Requester approves</h4>
+        <p>Worker claims payment + collateral. Happy path.</p>
+      </div>
+      <div class="resolve-card">
+        <div class="label">Path 2</div>
+        <h4>Claim after timeout</h4>
+        <p>Requester goes silent past the review window. Worker claims payment + collateral automatically.</p>
+      </div>
+      <div class="resolve-card">
+        <div class="label">Path 3</div>
+        <h4>Dispute, worker wins</h4>
+        <p>Arbitrator sides with worker. Worker claims payment + collateral + dispute fee.</p>
+      </div>
+      <div class="resolve-card">
+        <div class="label">Path 4</div>
+        <h4>Dispute, requester wins</h4>
+        <p>Arbitrator sides with requester. Requester claims payment + collateral + dispute fee.</p>
+      </div>
+    </div>
+
+    <p>All four paths are enforced by the contract. Neither party can exit by simply walking away.</p>
+
+    <h3>What if the work is bad?</h3>
+
+    <p>NovaCRM clicks <strong>Dispute</strong>. They pay the 0.1 NPH dispute fee. They contact the arbitrator off-chain at <strong>@tappyoak</strong> on Telegram or Discord to explain the problem. The arbitrator reviews the situation and resolves on-chain.</p>
+
+    <p>If the arbitrator sides with NovaCRM: they get their 2 NPH back plus Priya's 1 NPH collateral plus the 0.1 NPH dispute fee. Priya walks away with nothing.</p>
+
+    <p>If the arbitrator sides with Priya: Priya gets the 2 NPH payment plus her 1 NPH collateral plus the 0.1 NPH dispute fee. NovaCRM loses the dispute fee for filing in bad faith.</p>
+
+    <h2 id="mode-a">Mode A: Hash-verified settlement, start to finish</h2>
+
+    <h3>Why Mode A exists</h3>
+
+    <p>Mode A solves a specific problem: what if the expected output is fully known before the contract starts?</p>
+
+    <p>If you are buying a fine-tuned model and both parties already know what the model weights file should look like, including its exact checksum, there is no need for anyone to review the delivery. The contract verifies it automatically. No human approval. No waiting. This makes Idios useful for AI data vendors, model marketplaces, and autonomous agent pipelines.</p>
+
+    <h3>The scenario</h3>
+
+    <p>A startup called VisionAI has trained a custom image classification model. They are selling it to a research lab called MedResearch for 5 NPH. Before the contract is created, VisionAI sends MedResearch a small sample of the model and its SHA-256 hash privately: <code>a4f7e2b1...9c03</code>. MedResearch verifies the sample and agrees this is the file they want to buy.</p>
+
+    <p>Neither party wants this transaction public. MedResearch does not want competitors knowing they are acquiring this model. VisionAI does not want their client list visible.</p>
+
+    <h3>The key difference from Mode B</h3>
+
+    <p>In Mode B the delivery hash is submitted after the work is done. In Mode A the expected result hash is locked into the contract by the buyer when they create it. The seller cannot change it. The only way to get paid is to deliver the file that produces exactly that hash.</p>
+
+    <h3>Step 1: MedResearch creates the contract</h3>
+
+    <p>MedResearch opens Idios, clicks <strong>Start a contract</strong>, selects <strong>Hash-verified</strong>, and fills in:</p>
+
+    <ul>
+      <li><strong>Contract ID:</strong> 88802</li>
+      <li><strong>Settlement type:</strong> Hash-verified (Mode A)</li>
+      <li><strong>Payment:</strong> 5 NPH</li>
+      <li><strong>VisionAI's pubkey:</strong> provided by VisionAI</li>
+      <li><strong>Expiry block:</strong> current block + 3,000</li>
+      <li><strong>Result hash:</strong> <code>a4f7e2b1...9c03</code></li>
+    </ul>
+
+    <p>Their 5 NPH payment is locked. VisionAI can see the contract.</p>
+
+    <h3>Step 2: VisionAI commits collateral</h3>
+
+    <p>VisionAI finds contract 88802 in Idios and commits 2.5 NPH collateral. They now have 2.5 NPH at risk. If they deliver the wrong file, they lose it.</p>
+
+    <h3>Step 3: VisionAI delivers</h3>
+
+    <p>VisionAI generates the hash of their model file:</p>
+
+    <pre><code>sha256sum vision_classifier_v2.bin</code></pre>
+
+    <p>Output: <code>a4f7e2b1...9c03</code></p>
+
+    <p>This matches the result hash MedResearch locked in. VisionAI submits this hash to Idios. The contract checks: does <code>delivery_hash == result_hash</code>? Yes. Payment releases automatically. 5 NPH payment plus 2.5 NPH collateral goes to VisionAI. Total: 7.5 NPH. Nobody clicked approve.</p>
+
+    <p>VisionAI then sends the actual model file to MedResearch however they agreed. The file never touches the blockchain.</p>
+
+    <h3>Generating a SHA-256 hash</h3>
+
+    <p>On Linux or Mac:</p>
+    <pre><code>sha256sum yourfile.bin</code></pre>
+
+    <p>On Windows (PowerShell):</p>
+    <pre><code>Get-FileHash yourfile.bin -Algorithm SHA256</code></pre>
+
+    <p>The output is always a 64-character hex string. The same file always produces the same hash. Change a single byte and the entire hash changes.</p>
+
+    <h2 id="collateral">The collateral and why it matters</h2>
+
+    <p>In every other AI freelance platform, only the buyer's funds are at risk. A developer can take a job, disappear, or deliver broken code, and their only consequence is a lower rating. They make a new account and start again.</p>
+
+    <p>In Idios the worker locks collateral before they can submit delivery. If the dispute goes against them they lose it. A developer who has locked 1 NPH has a direct financial reason to deliver working code. A developer who has not locked anything does not.</p>
+
+    <p>The collateral amount is set when the contract is created. The dapp defaults to 50% of the payment. For high-trust repeat work you might lower it. For a first engagement with an unknown party you might raise it.</p>
+
+    <h2 id="reference">Quick reference</h2>
+
+    <table>
+      <thead>
+        <tr><th>Action</th><th>Who</th><th>When</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Create contract</td><td>Requester</td><td>Before work starts, locks payment</td></tr>
+        <tr><td>Commit collateral</td><td>Worker</td><td>After creation, locks collateral</td></tr>
+        <tr><td>Submit delivery</td><td>Worker</td><td>When work is done, submits hash</td></tr>
+        <tr><td>Approve</td><td>Requester</td><td>Mode B only, after reviewing work</td></tr>
+        <tr><td>Dispute</td><td>Requester</td><td>Mode B only, if work is unsatisfactory</td></tr>
+        <tr><td>Resolve to requester</td><td>Arbitrator</td><td>After dispute, if requester wins</td></tr>
+        <tr><td>Resolve to worker</td><td>Arbitrator</td><td>After dispute, if worker wins</td></tr>
+        <tr><td>Claim after timeout</td><td>Worker</td><td>Mode B only, if requester never responds</td></tr>
+        <tr><td>Claim funds</td><td>Worker</td><td>After settlement or resolve in worker's favour</td></tr>
+        <tr><td>Refund</td><td>Requester</td><td>If worker never commits, after expiry</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="faq">Frequently asked questions</h2>
+
+    <dl class="faq">
+      <dt>Does the actual work get stored on-chain?</dt>
+      <dd>No. Only the hash (fingerprint) of the deliverable is stored. The actual file, codebase, or model is exchanged off-chain however the two parties agree.</dd>
+
+      <dt>Can I use NPH instead of BEAM?</dt>
+      <dd>Yes. When creating a contract, select NPH as the payment asset. NPH is a USD-pegged confidential stablecoin on Beam. Get NPH via the DEX tab in your Beam Desktop wallet.</dd>
+
+      <dt>How do I get my Beam pubkey?</dt>
+      <dd>Open the Idios dapp in Beam Desktop. Your pubkey is shown on the landing page. It is contract-specific, meaning the pubkey shown in Idios is different from your general Beam wallet address. Always use the pubkey from the Idios dapp, not your wallet address.</dd>
+
+      <dt>What if the worker commits collateral and then disappears?</dt>
+      <dd>The contract expires at the expiry block you set. After expiry, if no delivery was submitted, you click Refund to get your payment back. The worker loses their collateral.</dd>
+
+      <dt>What if both parties disagree about whether the work meets the spec?</dt>
+      <dd>The requester files a dispute and pays the dispute fee. The arbitrator reviews the situation off-chain and resolves on-chain. Contact the arbitrator at @tappyoak on Telegram or Discord with the contract ID, your role, and a description of the dispute.</dd>
+
+      <dt>How long do transactions take to confirm?</dt>
+      <dd>Each on-chain action typically confirms within one to two Beam blocks, usually a few minutes. The review window (e.g. 2,000 blocks, about 33 hours) is separate. That is the time the requester has to approve or dispute after delivery. The transaction itself is fast. The review window is a deliberate waiting period.</dd>
+
+      <dt>Can I cancel a contract after creating it?</dt>
+      <dd>Not directly. Once created the payment is locked. If the worker never commits their collateral, you can refund after the expiry block passes. If the worker has already committed, both sides are locked in until delivery, approval, dispute, or expiry.</dd>
+
+      <dt>What if I approve work and then regret it?</dt>
+      <dd>Once you approve, the worker can claim funds and you cannot reverse it. Test the deliverable thoroughly before approving.</dd>
+
+      <dt>Is my transaction history private?</dt>
+      <dd>Yes. Beam's MimbleWimble protocol hides amounts and counterparty identities at the base layer. No one can see what you paid, who you paid, or how much the collateral was. This is not a mixer or add-on. Privacy is built into the Beam protocol itself.</dd>
+
+      <dt>What stops the requester from downloading the work and not paying?</dt>
+      <dd>The order of operations. The worker submits the delivery hash on-chain first, locking the contract into Awaiting Approval. Only then do they send the actual file. The requester cannot get their payment back without either approving (worker gets paid) or disputing (arbitrator decides). If they do nothing, the worker claims after the review window expires. The requester's payment and the worker's collateral are both locked until the contract resolves.</dd>
+
+      <dt>Does Idios take a fee?</dt>
+      <dd>No. The contract charges no platform fee. You pay only the standard Beam network transaction fee, typically 0.021 BEAM per action.</dd>
+
+      <dt>Who is the arbitrator?</dt>
+      <dd>A single arbitrator key is set in the contract at deploy time. Contact @tappyoak on Telegram or Discord for dispute resolution. Include the contract ID, your role, and a brief description of the situation.</dd>
+
+      <dt>Can my funds be frozen?</dt>
+      <dd>No. Idios uses BEAM and NPH. Neither asset has a central issuer with blacklist functions. Unlike USDC or USDT, no third party can freeze your funds in an Idios contract.</dd>
+    </dl>
+
+    <div class="callout" style="margin-top: 48px;">
+      <em>Idios is beta software. Funds are at risk. Read the <a href="terms.html">terms and risk disclosure</a> before using.</em>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="inner">
+    <span>Idios. Private escrow for AI work on Beam.</span>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="https://honeytones.github.io/idios-market/">Marketplace</a></li>
+      <li><a href="https://github.com/honeytones/idios">GitHub</a></li>
+      <li><a href="terms.html">Terms</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>
