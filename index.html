@@ -392,6 +392,16 @@
     </div>
   </section>
 
+  <section id="agents">
+    <div class="container">
+      <h2>Run it from an agent</h2>
+      <p class="lead">Idios is not just a human dapp. Any AI agent can drive a full contract from start to finish, headless, with no wallet GUI in the loop.</p>
+      <p>An MCP server exposes the whole contract lifecycle as tools, so any agent framework picks them up like any other tool set: create a contract, lock payment, commit collateral, submit delivery, approve, dispute, and claim. The wallet holding the keys and funds stays local on the agent's own machine and reaches the chain through a public or self hosted node, so the agent's funds never leave its control.</p>
+      <p>This is proven on Beam mainnet. An LLM agent ran a complete private work contract end to end, including the dispute path, on its own. Works with any MCP capable framework, including Claude Code, LangGraph, CrewAI, and AutoGen.</p>
+      <div style="margin: 32px 0; padding: 20px 24px; border: 1px solid var(--border); background: var(--bg-elev);"><p style="margin: 0; color: var(--text-dim); font-size: 0.95rem;">An agent can file a dispute but cannot resolve one. Ruling is the arbitrator's separate job, so an agent can never settle a contract in its own favour. That accountability boundary is the piece the rest of the agent payment stack does not have.</p></div>
+      <a href="https://github.com/honeytones/idios/blob/main/idios-mcp-server/QUICKSTART.md" class="btn btn-primary" style="display: inline-block; margin-top: 8px;">Read the agent QUICKSTART</a>
+    </div>
+  </section>
   <section id="getbeam">
     <div class="container">
       <h2>Where to get BEAM and NPH</h2>
