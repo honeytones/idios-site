@@ -196,8 +196,8 @@
 
       <div class="status-bar">
         <span><span class="dot"></span>Live on Beam mainnet</span>
-        <span>Contract <code>f9751785...14255</code></span>
-        <span>v4</span>
+        <span>Contract <code>f40eb64d...cdc45</code></span>
+        <span>v3.1.7</span>
       </div>
     </div>
   </header>
@@ -351,11 +351,11 @@
       <div class="grid-3" style="margin-top: 32px;">
         <div class="card">
           <h3>Active since</h3>
-          <p>June 10, 2026 (block 3898709)</p>
+          <p>May 2, 2026 (block 3842196)</p>
         </div>
         <div class="card">
           <h3>Contract</h3>
-          <p><code style="font-size: 0.75em;">f97517856d721c...</code></p>
+          <p><code style="font-size: 0.75em;">f40eb64da63a69...</code></p>
         </div>
         <div class="card">
           <h3>Explorer</h3>
@@ -379,12 +379,12 @@
         <div class="step">
           <div class="num">STEP 02</div>
           <h4>Download idios.dapp</h4>
-          <p><a href="https://github.com/honeytones/idios/releases/latest/download/idios.dapp" class="btn btn-primary" style="display: inline-block; margin-bottom: 8px;">Download idios.dapp</a><br><span style="font-size: 0.85rem; color: var(--text-dim);">v3.2.0, works on Windows, Mac, and Linux.</span></p>
+          <p><a href="https://github.com/honeytones/idios/releases/latest/download/idios.dapp" class="btn btn-primary" style="display: inline-block; margin-bottom: 8px;">Download idios.dapp</a><br><span style="font-size: 0.85rem; color: var(--text-dim);">v3.1.7, works on Windows, Mac, and Linux.</span></p>
         </div>
         <div class="step">
           <div class="num">STEP 03</div>
           <h4>Install in wallet</h4>
-          <p>In Beam Desktop, go to Applications, Install from file, select <code>idios.dapp</code>. If an older Idios is already installed, remove it first. Done.</p>
+          <p>In Beam Desktop, go to Applications, Install from file, select <code>idios.dapp</code>. Done.</p>
         </div>
       </div>
 
@@ -446,7 +446,7 @@
 
         <h3 style="margin-top: 48px;">Roadmap</h3>
         <ul style="color: var(--text-dim); padding-left: 20px; line-height: 1.8;">
-          <li><strong style="color: var(--text);">Phase 0 (shipped):</strong> mainnet v5 contract, dapp v3.2.0 with both Hash-verified and Reviewed settlement modes, four Mode B resolution paths verified end to end on mainnet, BEAM and confidential asset (NPH) payment support, explorer parser, arbitrator console, agent runtime daemon (worker, requester, arbitrator roles), in-dapp daemon config export</li>
+          <li><strong style="color: var(--text);">Phase 0 (shipped):</strong> mainnet v3 contract, dapp v3.1.7 with both Hash-verified and Reviewed settlement modes, four Mode B resolution paths verified end to end on mainnet, BEAM and confidential asset (NPH) payment support, explorer parser, arbitrator console, agent runtime daemon (worker, requester, arbitrator roles), in-dapp daemon config export</li>
           <li><strong style="color: var(--text);">Phase 1 (next):</strong> multi-arbitrator dispute resolution (per-contract M of N pubkey sets), removes the single-arbitrator trust assumption for marketplaces and sophisticated users</li>
           <li><strong style="color: var(--text);">Phase 2:</strong> IPFS payload delivery and additional confidential assets</li>
           <li><strong style="color: var(--text);">Phase 3:</strong> research direction, programmatic verifiers for specific contract types (partner-driven)</li>
