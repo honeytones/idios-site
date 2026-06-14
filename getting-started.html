@@ -348,7 +348,7 @@
         <tr><td>Resolve to worker</td><td>Arbitrator</td><td>After dispute, if worker wins</td></tr>
         <tr><td>Claim after timeout</td><td>Worker</td><td>Mode B only, if requester never responds</td></tr>
         <tr><td>Claim funds</td><td>Worker</td><td>After settlement or resolve in worker's favour</td></tr>
-        <tr><td>Refund</td><td>Requester</td><td>If worker never commits, after expiry</td></tr>
+        <tr><td>Refund</td><td>Requester</td><td>After expiry if no delivery; a committed worker forfeits collateral to the treasury</td></tr>
       </tbody>
     </table>
 
@@ -365,7 +365,7 @@
       <dd>Open the Idios dapp in Beam Desktop. Your pubkey is shown on the landing page. It is contract-specific, meaning the pubkey shown in Idios is different from your general Beam wallet address. Always use the pubkey from the Idios dapp, not your wallet address.</dd>
 
       <dt>What if the worker commits collateral and then disappears?</dt>
-      <dd>The contract expires at the expiry block you set. After expiry, if no delivery was submitted, you click Refund to get your payment back. The worker also gets their collateral back. Neither side loses funds on a simple refund. If you want the worker to lose their collateral, you need to file a dispute before expiry and have the arbitrator resolve against them.</dd>
+      <dd>The contract expires at the block you set. After expiry, if no delivery was submitted, you click Refund and get your payment back. If the worker had committed collateral, that collateral is forfeited to the treasury. It does not return to the worker and it does not come to you. That forfeit is the penalty for committing and then going silent, and it happens on the refund itself, no dispute needed. If no worker ever committed, Refund just returns your payment and there is no collateral in play.</dd>
 
       <dt>What if both parties disagree about whether the work meets the spec?</dt>
       <dd>The requester files a dispute and pays the dispute fee. The arbitrator reviews the situation off-chain and resolves on-chain. Contact the arbitrator at @tappyoak on Telegram or Discord with the contract ID, your role, and a description of the dispute.</dd>
