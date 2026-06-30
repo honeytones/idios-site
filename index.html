@@ -197,7 +197,7 @@
       <div class="status-bar">
         <span><span class="dot"></span>Live on Beam mainnet</span>
         <span>Contract <code>41ef8be5...4921f</code></span>
-        <span>v6</span>
+        <span>M of N v1</span>
       </div>
     </div>
   </header>
@@ -319,7 +319,7 @@
           </tr>
           <tr>
             <td>Trust assumption<sup style="color: var(--text-faint);">1</sup></td>
-            <td>Single arbitrator today (M of N on roadmap)</td>
+            <td>M of N voting, live (N is 1 today)</td>
             <td>Facilitator + seller</td>
             <td>Evaluator</td>
             <td>Operator</td>
@@ -335,7 +335,7 @@
       </table>
 
       <p style="margin-top: 16px; color: var(--text-faint); font-size: 0.82rem;">
-        <sup>1</sup> Disputes resolve via a single on-chain arbitrator today. M of N multi-arbitrator resolution is Phase 1 of the roadmap. Refunds for expired Open contracts are always available to the requester.
+        <sup>1</sup> Disputes resolve via M of N arbitrator voting, live on mainnet, with one arbitrator registered today (N is 1). Registering more independent arbitrators is the immediate next step. Refunds for expired Open contracts are always available to the requester.
         <br><br>
         <sup>2</sup> ERC-8183 defines a similar lifecycle (Open, Funded, Submitted, Terminal). Idios uses Requester, Worker, and Arbitrator. The concepts are analogous but Idios has additional features ERC-8183 does not: worker collateral, working dispute resolution, and private settlement amounts.
       </p>
@@ -446,8 +446,8 @@
 
         <h3 style="margin-top: 48px;">Roadmap</h3>
         <ul style="color: var(--text-dim); padding-left: 20px; line-height: 1.8;">
-          <li><strong style="color: var(--text);">Phase 0 (shipped):</strong> mainnet v6 contract, dapp v3.3.0 with both Hash-verified and Reviewed settlement modes, four Mode B resolution paths verified end to end on mainnet, BEAM and confidential asset (NPH) payment support, explorer parser, arbitrator console, agent runtime daemon (worker, requester, arbitrator roles), in-dapp daemon config export</li>
-          <li><strong style="color: var(--text);">Phase 1 (next):</strong> multi-arbitrator dispute resolution (per-contract M of N pubkey sets), removes the single-arbitrator trust assumption for marketplaces and sophisticated users</li>
+          <li><strong style="color: var(--text);">Phase 0 (shipped):</strong> mainnet M of N v1 contract (upgraded in place from v6 via Upgradable3 on 21 June 2026), dapp v3.3.0 with both Hash-verified and Reviewed settlement modes, four Mode B resolution paths verified end to end on mainnet, BEAM and Nephrite (NPH) settlement both tested on mainnet, explorer parser, agent runtime daemon (worker, requester, arbitrator roles), in-dapp daemon config export</li>
+          <li><strong style="color: var(--text);">Phase 1 (next):</strong> real decentralization and reputation, register more independent arbitrators for a true 2 of 3 quorum, rework the dapp, MCP, and daemon arbitrator surfaces onto register, vote, and claim_reward, add arbitrator slashing, then privacy preserving reputation</li>
           <li><strong style="color: var(--text);">Phase 2:</strong> IPFS payload delivery and additional confidential assets</li>
           <li><strong style="color: var(--text);">Phase 3:</strong> research direction, programmatic verifiers for specific contract types (partner-driven)</li>
         </ul>
@@ -477,7 +477,7 @@
         </details>
         <details>
           <summary>Is this trustless?</summary>
-          <p>Partially. Mode A is fully trustless: settlement requires a hash match, no third party can intervene. Mode B introduces an on-chain arbitrator who can resolve disputes if the requester and worker disagree. Today there is a single arbitrator. Phase 1 introduces M of N multi-arbitrator resolution which removes the single point of trust. Refunds for expired Open contracts are always available without arbitrator involvement.</p>
+          <p>Partially. Mode A is fully trustless: settlement requires a hash match, no third party can intervene. Mode B introduces an on-chain arbitrator who can resolve disputes if the requester and worker disagree. Dispute resolution uses M of N arbitrator voting, live on mainnet, with one arbitrator registered today (N is 1). Registering more independent arbitrators removes the single point of trust. Refunds for expired Open contracts are always available without arbitrator involvement.</p>
         </details>
         <details>
           <summary>How does Idios relate to ERC-8183?</summary>
