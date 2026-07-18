@@ -197,7 +197,7 @@
       <div class="status-bar">
         <span><span class="dot"></span>Live on Beam mainnet</span>
         <span>Contract <code>41ef8be5...4921f</code></span>
-        <span>M of N v1</span>
+        <span>v2, M of N live</span>
       </div>
     </div>
   </header>
@@ -379,7 +379,7 @@
         <div class="step">
           <div class="num">STEP 02</div>
           <h4>Download idios.dapp</h4>
-          <p><a href="https://github.com/honeytones/idios/releases/latest/download/idios.dapp" class="btn btn-primary" style="display: inline-block; margin-bottom: 8px;">Download idios.dapp</a><br><span style="font-size: 0.85rem; color: var(--text-dim);">v3.2.0, works on Windows, Mac, and Linux.</span></p>
+          <p><a href="https://github.com/honeytones/idios/releases/latest/download/idios.dapp" class="btn btn-primary" style="display: inline-block; margin-bottom: 8px;">Download idios.dapp</a><br><span style="font-size: 0.85rem; color: var(--text-dim);">v3.3.0, works on Windows, Mac, and Linux.</span></p>
         </div>
         <div class="step">
           <div class="num">STEP 03</div>
@@ -416,7 +416,7 @@
         </div>
         <div class="card">
           <h3>buybeam.my</h3>
-          <p style="margin-bottom: 16px;">Community run swap service. Fast, cheap, swaps straight from ETH to BEAM with no exchange account needed. Run by a member of the Beam community.</p>
+          <p style="margin-bottom: 16px;">Community run swap service. Fast, cheap, swaps straight from ETH to BEAM with no exchange account needed. Run by a member of the Beam community. One catch: the swap has a minimum of just over $1 of BEAM, smaller amounts send nothing to your wallet.</p>
           <a href="https://buybeam.my/">buybeam.my</a>
         </div>
         <div class="card">
@@ -446,8 +446,8 @@
 
         <h3 style="margin-top: 48px;">Roadmap</h3>
         <ul style="color: var(--text-dim); padding-left: 20px; line-height: 1.8;">
-          <li><strong style="color: var(--text);">Phase 0 (shipped):</strong> mainnet M of N v1 contract (upgraded in place from v6 via Upgradable3 on 21 June 2026), dapp v3.3.0 with both Hash-verified and Reviewed settlement modes, four Mode B resolution paths verified end to end on mainnet, BEAM and Nephrite (NPH) settlement both tested on mainnet, explorer parser, agent runtime daemon (worker, requester, arbitrator roles), in-dapp daemon config export</li>
-          <li><strong style="color: var(--text);">Phase 1 (next):</strong> real decentralization and reputation, register more independent arbitrators for a true 2 of 3 quorum, rework the dapp, MCP, and daemon arbitrator surfaces onto register, vote, and claim_reward, add arbitrator slashing, then privacy preserving reputation</li>
+          <li><strong style="color: var(--text);">Phase 0 (shipped):</strong> mainnet v2 contract (upgraded in place from v6 to M of N v1 on 21 June 2026, then to v2 on 8 July 2026, all via Upgradable3), hardened arbitrator registration and slashable worker reputation bonds (v2), dapp v3.3.0 with both Hash-verified and Reviewed settlement modes, four Mode B resolution paths verified end to end on mainnet, BEAM and Nephrite (NPH) settlement both tested on mainnet, explorer parser, agent runtime daemon (worker and requester roles), in-dapp daemon config export</li>
+          <li><strong style="color: var(--text);">Phase 1 (next):</strong> real decentralization and reputation, register more independent arbitrators for a true 2 of 3 quorum, rework the dapp arbitrator console onto register, vote, and claim_reward (the MCP server and daemon moved to the v2 surface in July 2026), add arbitrator slashing, then the off chain reputation score reader on top of the v2 worker bond</li>
           <li><strong style="color: var(--text);">Phase 2:</strong> IPFS payload delivery and additional confidential assets</li>
           <li><strong style="color: var(--text);">Phase 3:</strong> research direction, programmatic verifiers for specific contract types (partner-driven)</li>
         </ul>
@@ -493,7 +493,7 @@
         </details>
         <details>
           <summary>Where do I get BEAM?</summary>
-          <p>The official Beam site at <a href="https://www.beam.mw/">beam.mw</a> lists exchanges and acquisition routes. For a fast cheap swap straight from ETH to BEAM, a community member runs <a href="https://buybeam.my/">buybeam.my</a>, which skips the usual exchange friction.</p>
+          <p>The official Beam site at <a href="https://www.beam.mw/">beam.mw</a> lists exchanges and acquisition routes. For a fast cheap swap straight from ETH to BEAM, a community member runs <a href="https://buybeam.my/">buybeam.my</a>, which skips the usual exchange friction. Note the swap minimum: just over $1 of BEAM, smaller amounts send nothing to your wallet.</p>
         </details>
         <details>
           <summary>Where do I get NPH?</summary>
@@ -501,7 +501,7 @@
         </details>
         <details>
           <summary>How do I contact the arbitrator if I have a dispute?</summary>
-          <p>To reach the arbitrator, contact <strong>@tappyoak</strong> on Telegram. Include the contract ID, your role (requester or worker), and a brief description of the dispute. The arbitrator will review the situation off-chain and resolve on-chain.</p>
+          <p>To reach the arbitrator, contact <strong>@tappyoak</strong> on Telegram. Include the contract ID, your role (requester or worker), and a brief description of the dispute. The arbitrators review the situation off-chain and resolve on-chain by voting.</p>
         </details>
         <details>
           <summary>Is the contract audited?</summary>

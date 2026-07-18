@@ -288,7 +288,7 @@
         <p style="color: var(--text-dim); margin-bottom: 16px;">You need a small amount of BEAM to cover network fees (roughly 0.021 BEAM per contract action, less than a cent). Payment can be in BEAM or NPH, a USD-pegged confidential stablecoin available inside the Beam wallet DEX.</p>
         <div style="display: flex; gap: 24px; flex-wrap: wrap;">
           <a href="https://www.beam.mw/">Get BEAM via beam.mw</a>
-          <a href="https://buybeam.my/">Fast swap at buybeam.my (ETH to BEAM, no account needed)</a>
+          <a href="https://buybeam.my/">Fast swap at buybeam.my (ETH to BEAM, no account needed; minimum just over $1 of BEAM)</a>
         </div>
       </div>
     </div>
@@ -308,7 +308,7 @@
         </details>
         <details>
           <summary>What if the worker delivers bad work?</summary>
-          <p>In Reviewed settlement (Mode B), you have a review window to approve or dispute after the worker submits delivery. If you dispute, an arbitrator reviews the situation off-chain and resolves on-chain. If the arbitrator sides with you, you get your payment back plus the worker's collateral plus your dispute fee. If the arbitrator sides with the worker, they receive the full amount including your dispute fee. The arbitrator's decision is final and enforced by the contract.</p>
+          <p>In Reviewed settlement (Mode B), you have a review window to approve or dispute after the worker submits delivery. If you dispute, the arbitrators review the situation off-chain and resolve on-chain by voting. If they side with you, you get your payment back plus the worker's collateral. If they side with the worker, the worker receives the payment plus their collateral. Either way the dispute fee pays the voting arbitrators for judging the dispute. The resolution is final and enforced by the contract.</p>
         </details>
         <details>
           <summary>What if I pay for AI compute and the output is wrong?</summary>
@@ -328,7 +328,7 @@
         </details>
         <details>
           <summary>Can I automate this for high-volume work?</summary>
-          <p>Yes. The Idios agent daemon is a Python program that automates the worker, client, or arbitrator role in a contract. It polls the chain, watches your contracts, and fires the right action when the state changes. It supports batch creation of up to 50 contracts in a single transaction for high-volume operators. See the <a href="https://github.com/honeytones/idios/tree/main/idios-agent-daemon">daemon documentation</a> for details.</p>
+          <p>Yes. The Idios agent daemon is a Python program that automates the worker or client role in a contract (dispute voting is deliberately human only, never automated). It polls the chain, watches your contracts, and fires the right action when the state changes. It supports batch creation of up to 50 contracts in a single transaction for high-volume operators. See the <a href="https://github.com/honeytones/idios/tree/main/idios-agent-daemon">daemon documentation</a> for details.</p>
         </details>
       </div>
     </div>

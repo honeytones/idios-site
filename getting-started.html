@@ -164,7 +164,7 @@
     <div class="step-block">
       <div class="step-num">Mode B</div>
       <h4>Reviewed settlement</h4>
-      <p>The requester locks payment. The worker commits collateral. They deliver the work. The requester reviews it and approves. Funds release privately. If the requester disputes, an arbitrator decides. Best for any work where a human needs to judge the outcome: custom AI agents, automation systems, LLM integrations, consulting, data labelling.</p>
+      <p>The requester locks payment. The worker commits collateral. They deliver the work. The requester reviews it and approves. Funds release privately. If the requester disputes, arbitrators decide by vote. Best for any work where a human needs to judge the outcome: custom AI agents, automation systems, LLM integrations, consulting, data labelling.</p>
     </div>
 
     <div class="step-block">
@@ -195,7 +195,7 @@
       <li><strong>Priya's pubkey:</strong> the key Priya sent them</li>
       <li><strong>Expiry block:</strong> current block + 20,000 (about two weeks)</li>
       <li><strong>Review window:</strong> 2,000 blocks (about 33 hours to approve or dispute after delivery)</li>
-      <li><strong>Dispute fee:</strong> 0.1 NPH (locked if NovaCRM disputes, returned if arbitrator sides with them)</li>
+      <li><strong>Dispute fee:</strong> 0.1 NPH (locked if NovaCRM disputes; win or lose, the fee pays the arbitrators for judging the dispute)</li>
     </ul>
 
     <p>NovaCRM clicks <strong>Create Contract</strong>. Their wallet asks them to confirm locking 2 NPH. They confirm. The contract is on-chain. Their payment is locked. Priya can see the contract exists and the terms.</p>
@@ -246,12 +246,12 @@
       <div class="resolve-card">
         <div class="label">Path 3</div>
         <h4>Dispute, worker wins</h4>
-        <p>Arbitrator sides with worker. Worker claims payment + collateral + dispute fee.</p>
+        <p>Arbitrators side with worker. Worker claims payment + collateral. The dispute fee pays the voting arbitrators.</p>
       </div>
       <div class="resolve-card">
         <div class="label">Path 4</div>
         <h4>Dispute, requester wins</h4>
-        <p>Arbitrator sides with requester. Requester claims payment + collateral + dispute fee.</p>
+        <p>Arbitrators side with requester. Requester claims payment + collateral. The dispute fee pays the voting arbitrators.</p>
       </div>
     </div>
 
@@ -259,11 +259,11 @@
 
     <h3>What if the work is bad?</h3>
 
-    <p>NovaCRM clicks <strong>Dispute</strong>. They pay the 0.1 NPH dispute fee. They contact the arbitrator off-chain at <strong>@tappyoak</strong> on Telegram or Discord to explain the problem. The arbitrator reviews the situation and resolves on-chain.</p>
+    <p>NovaCRM clicks <strong>Dispute</strong>. They pay the 0.1 NPH dispute fee. They contact the arbitrator off-chain at <strong>@tappyoak</strong> on Telegram or Discord to explain the problem. The arbitrators review the situation and resolve on-chain by voting.</p>
 
-    <p>If the arbitrator sides with NovaCRM: they get their 2 NPH back plus Priya's 1 NPH collateral plus the 0.1 NPH dispute fee. Priya walks away with nothing.</p>
+    <p>If the arbitrators side with NovaCRM: they get their 2 NPH back plus Priya's 1 NPH collateral, 3 NPH total. Priya walks away with nothing.</p>
 
-    <p>If the arbitrator sides with Priya: Priya gets the 2 NPH payment plus her 1 NPH collateral plus the 0.1 NPH dispute fee. NovaCRM loses the dispute fee for filing in bad faith.</p>
+    <p>If the arbitrators side with Priya: Priya gets the 2 NPH payment plus her 1 NPH collateral, 3 NPH total. Either way the 0.1 NPH dispute fee goes to the voting arbitrators as payment for judging the dispute.</p>
 
     <h2 id="mode-a">Mode A: Hash-verified settlement, start to finish</h2>
 
@@ -344,8 +344,8 @@
         <tr><td>Submit delivery</td><td>Worker</td><td>When work is done, submits hash</td></tr>
         <tr><td>Approve</td><td>Requester</td><td>Mode B only, after reviewing work</td></tr>
         <tr><td>Dispute</td><td>Requester</td><td>Mode B only, if work is unsatisfactory</td></tr>
-        <tr><td>Resolve to requester</td><td>Arbitrator</td><td>After dispute, if requester wins</td></tr>
-        <tr><td>Resolve to worker</td><td>Arbitrator</td><td>After dispute, if worker wins</td></tr>
+        <tr><td>Vote</td><td>Arbitrators</td><td>After dispute; resolves to whichever side reaches the vote threshold</td></tr>
+        
         <tr><td>Claim after timeout</td><td>Worker</td><td>Mode B only, if requester never responds</td></tr>
         <tr><td>Claim funds</td><td>Worker</td><td>After settlement or resolve in worker's favour</td></tr>
         <tr><td>Refund</td><td>Requester</td><td>After expiry if no delivery; a committed worker forfeits collateral to the treasury</td></tr>
@@ -368,7 +368,7 @@
       <dd>The contract expires at the block you set. After expiry, if no delivery was submitted, you click Refund and get your payment back. If the worker had committed collateral, that collateral is forfeited to the treasury. It does not return to the worker and it does not come to you. That forfeit is the penalty for committing and then going silent, and it happens on the refund itself, no dispute needed. If no worker ever committed, Refund just returns your payment and there is no collateral in play.</dd>
 
       <dt>What if both parties disagree about whether the work meets the spec?</dt>
-      <dd>The requester files a dispute and pays the dispute fee. The arbitrator reviews the situation off-chain and resolves on-chain. Contact the arbitrator at @tappyoak on Telegram or Discord with the contract ID, your role, and a description of the dispute.</dd>
+      <dd>The requester files a dispute and pays the dispute fee. The arbitrators review the situation off-chain and resolve on-chain by voting. The winner receives the payment plus the collateral; the dispute fee pays the voting arbitrators. Contact the arbitrator at @tappyoak on Telegram or Discord with the contract ID, your role, and a description of the dispute.</dd>
 
       <dt>How long do transactions take to confirm?</dt>
       <dd>Each on-chain action typically confirms within one to two Beam blocks, usually a few minutes. The review window (e.g. 2,000 blocks, about 33 hours) is separate. That is the time the requester has to approve or dispute after delivery. The transaction itself is fast. The review window is a deliberate waiting period.</dd>

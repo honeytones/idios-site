@@ -79,7 +79,7 @@
 
 <div class="content">
   <h1>Terms of Use and Risk Disclosure</h1>
-  <p class="meta">Last updated: May 2026</p>
+  <p class="meta">Last updated: July 2026</p>
 
   <h2>No warranties</h2>
   <p>Idios is experimental software deployed on Beam mainnet. It is provided as-is, with no warranties of any kind, express or implied. Use it at your own risk. The contract has not been formally audited by a third-party security firm.</p>
@@ -88,7 +88,7 @@
   <p>Funds locked in the Idios contract are controlled entirely by the contract code. No administrator, developer, or third party can retrieve or reverse a transaction once it is on-chain. If a bug exists in the contract that causes funds to be lost or locked permanently, there is no recovery mechanism. The contract source is open and available for review at <a href="https://github.com/honeytones/idios">github.com/honeytones/idios</a>.</p>
 
   <h2>Arbitrator risk</h2>
-  <p>Disputed jobs in Mode B are resolved by a single on-chain arbitrator. The arbitrator's decision is final and enforced at the contract level. Today there is one arbitrator. If the arbitrator acts in bad faith, becomes unavailable, or loses access to their key, disputed jobs may not resolve correctly. Multi-arbitrator resolution (M of N) is on the roadmap for Phase 1 and will reduce this trust assumption. Until then, treat the single-arbitrator model accordingly.</p>
+  <p>Disputed jobs in Mode B are resolved by M of N arbitrator voting, live on mainnet since June 2026. The registry holds one arbitrator today (N is 1), so in practice a single party still decides disputes until more independent arbitrators register. A resolution is final and enforced at the contract level. If the arbitrators never resolve a dispute within the arbitrator timeout, anyone can void it and both parties reclaim their own funds, so an absent arbitrator cannot trap funds, but a bad faith resolution inside the timeout cannot be reversed. Arbitrator slashing is on the roadmap to reduce this trust assumption further.</p>
 
   <h2>No insurance</h2>
   <p>Funds held in Idios escrow are not insured by any protocol, fund, or third party. There is no equivalent of deposit insurance. You can lose the funds you put into escrow if the contract behaves unexpectedly or if you interact with it incorrectly.</p>
