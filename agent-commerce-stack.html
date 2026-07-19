@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Idios vs x402, AP2, ACP and ERC-8004: The Private Contract Layer for AI Agents</title>
+  <meta name="description" content="x402, AP2 and ACP solved instant pay-per-call for AI agents. Idios is the layer above: private escrow for the contracts agents commission from each other, with human arbitration, slashable worker bonds, and swarm payroll. Amounts and parties hidden on-chain." />
+  <meta name="keywords" content="x402 escrow, AI agent payments, agent commerce stack, ERC-8004 alternative, AI agent disputes, agent to agent contracts, private agent payments, swarm payroll, AI agent reputation, agent escrow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Idios vs x402, AP2, ACP and ERC-8004 | The Private Contract Layer" />
+  <meta property="og:description" content="Pay-per-call rails move cents in milliseconds, publicly. Idios settles the contracts those calls add up to, privately." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <style>
+    :root {
+      --bg:           #0a0a0a;
+      --bg-elev:      #141414;
+      --border:       #2a2a2a;
+      --border-soft:  #1c1c1c;
+      --text:         #e8e8e8;
+      --text-dim:     #888;
+      --text-faint:   #555;
+      --accent:       #e8e8e8;
+      --max:          1100px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); transition: border-color .15s ease; }
+    a:hover { border-color: var(--text); }
+    code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 0.9em; background: var(--bg-elev); padding: 2px 6px; border-radius: 3px; border: 1px solid var(--border-soft); }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-soft);
+    }
+    nav .container { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; }
+    nav .brand { font-weight: 600; letter-spacing: 0.02em; border: none; }
+    nav ul { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; }
+    nav ul a { border: none; color: var(--text-dim); font-size: 0.92rem; }
+    nav ul a:hover { color: var(--text); }
+    section { padding: 96px 0; border-bottom: 1px solid var(--border-soft); }
+    section:last-of-type { border-bottom: none; }
+    h1, h2, h3 { line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 24px; }
+    h1 { font-size: 3rem; font-weight: 600; }
+    h2 { font-size: 2rem; font-weight: 600; margin-bottom: 32px; }
+    h3 { font-size: 1.15rem; font-weight: 600; }
+    p { margin: 0 0 16px; color: var(--text); }
+    .lead { font-size: 1.2rem; color: var(--text-dim); max-width: 640px; }
+    .hero { padding: 128px 0 96px; text-align: center; }
+    .hero .container { display: flex; flex-direction: column; align-items: center; }
+    .hero .tagline { color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.8rem; margin-bottom: 24px; }
+    .hero .lead { margin-left: auto; margin-right: auto; }
+    .hero .ctas { display: flex; gap: 16px; margin-top: 40px; flex-wrap: wrap; justify-content: center; }
+    .btn { display: inline-block; padding: 14px 28px; border: 1px solid var(--text); color: var(--text); font-weight: 500; transition: background .15s ease, color .15s ease; }
+    .btn-primary:hover { background: var(--text); color: var(--bg); }
+    .btn-secondary:hover { background: var(--text); color: var(--bg); }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .card { padding: 28px; border: 1px solid var(--border); background: var(--bg-elev); transition: border-color .15s ease, transform .15s ease; }
+    .card:hover { border-color: var(--text); transform: translateY(-2px); }
+    .card h3 { margin-bottom: 12px; }
+    .card p { color: var(--text-dim); font-size: 0.95rem; margin: 0; }
+    .card .tag { display: inline-block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-faint); border: 1px solid var(--border); padding: 3px 8px; margin-bottom: 14px; }
+    .problem-box { padding: 32px; border: 1px solid var(--border); background: var(--bg-elev); margin-bottom: 24px; }
+    .problem-box .label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-faint); margin-bottom: 12px; }
+    .problem-box h3 { margin-bottom: 8px; }
+    .problem-box p { color: var(--text-dim); font-size: 0.95rem; margin: 0 0 12px; }
+    .problem-box .solution { color: var(--text); font-size: 0.95rem; padding-top: 12px; border-top: 1px solid var(--border-soft); }
+    .flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 40px 0; }
+    .flow-step { padding: 24px 20px; border: 1px solid var(--border); text-align: center; }
+    .flow-step .num { color: var(--text-faint); font-size: 0.75rem; letter-spacing: 0.15em; }
+    .flow-step h4 { margin: 8px 0 4px; font-size: 1rem; font-weight: 600; }
+    .flow-step p { color: var(--text-dim); font-size: 0.85rem; margin: 0; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px; }
+    .step .num { color: var(--text-faint); font-size: 0.75rem; letter-spacing: 0.15em; margin-bottom: 12px; }
+    .step h4 { margin: 0 0 8px; font-size: 1rem; }
+    .step p { color: var(--text-dim); font-size: 0.92rem; margin: 0; }
+    .faq details { padding: 20px 0; border-bottom: 1px solid var(--border-soft); }
+    .faq details:last-of-type { border-bottom: none; }
+    .faq summary { cursor: pointer; font-weight: 500; list-style: none; padding-right: 24px; position: relative; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; position: absolute; right: 0; top: 0; color: var(--text-dim); font-size: 1.2rem; }
+    .faq details[open] summary::after { content: "X"; }
+    .faq details p { margin-top: 12px; color: var(--text-dim); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
+    footer { padding: 48px 0 64px; color: var(--text-dim); font-size: 0.9rem; }
+    footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    footer ul { list-style: none; padding: 0; margin: 0; display: flex; gap: 24px; }
+    @media (max-width: 800px) {
+      h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.6rem; }
+      .grid-3, .flow, .steps, .contact-grid { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      nav ul { display: none; }
+      section { padding: 64px 0; }
+      .hero { padding: 80px 0 64px; }
+    }
+    table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.92rem; }
+    th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border-soft); vertical-align: top; }
+    th { color: var(--text-faint); font-weight: 500; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; }
+    @media (max-width: 800px) { table { font-size: 0.8rem; } th, td { padding: 8px 6px; } }
+  </style>
+</head>
+<body id="top">
+  <nav>
+    <div class="container">
+      <a href="index.html" class="brand">Idios</a>
+      <ul>
+        <li><a href="index.html">Main site</a></li>
+        <li><a href="#shapes">Two shapes</a></li>
+        <li><a href="#table">Comparison</a></li>
+        <li><a href="#receipts">Reviews vs receipts</a></li>
+        <li><a href="#disputes">Disputes</a></li>
+        <li><a href="#swarm">Swarm payroll</a></li>
+        <li><a href="getting-started.html">Getting started</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section>
+    <div class="container">
+      <h1>Where Idios sits in the agent commerce stack</h1>
+      <p>The 2026 agent payment stack converged fast. x402, Google's AP2, OpenAI and Stripe's ACP, and the card network agent rails all solve the same shape: an agent calls an API, the API charges a fraction of a cent, settlement lands in milliseconds. The right tool for the long tail of tool calls, and Idios does not compete with any of it.</p>
+      <p>The other shape of agent commerce is the contract: a longer job with a defined deliverable, a worker who might fail, a requester who might dispute, and amounts where it matters that nobody can see who paid what to whom. Idios is the layer for that shape, and it is the only one where the contract itself is private.</p>
+    </div>
+  </section>
+
+  <section id="shapes">
+    <div class="container">
+      <h2>The two shapes of agent commerce</h2>
+      <p><strong>Pay-per-call</strong> is trust-free by construction: the payment is so small and so instant that nothing needs escrow, review, or recourse. x402 alone has carried hundreds of millions of agent transactions this way. It is the packet switching of agent money.</p>
+      <p><strong>The contract</strong> is where value concentrates: an agent commissions a model fine-tune, a dataset build, a research report, a subcontracted pipeline. Delivery takes hours or days. The output needs review. The parties can disagree. Prepaying blind does not work, and a public ledger entry that says agent X paid agent Y five thousand for service Z is a permanent fingerprint.</p>
+      <p>The stacks compose: an agent network uses pay-per-call rails for its API calls and Idios for the contracts those calls add up to.</p>
+    </div>
+  </section>
+
+  <section id="table">
+    <div class="container">
+      <h2>Comparison</h2>
+      <table>
+        <thead>
+          <tr><th></th><th>Pay-per-call rails (x402, AP2, ACP)</th><th>Public escrow + AI juries</th><th>Idios</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Built for</td><td>API calls, sub-cent, instant</td><td>Contracts on public chains</td><td>Contracts, private by default</td></tr>
+          <tr><td>Amounts and parties</td><td>Public</td><td>Public</td><td>Hidden at the base layer of the chain</td></tr>
+          <tr><td>Escrow and collateral</td><td>None needed</td><td>Escrow, sometimes bonds</td><td>Payment escrowed, worker collateral, slashable reputation bonds</td></tr>
+          <tr><td>Dispute resolution</td><td>None, amounts too small</td><td>Pools of AI validators voting</td><td>M of N human arbitrators; an agent can never rule in its own favour</td></tr>
+          <tr><td>Funds-trapped risk</td><td>n/a</td><td>Depends on the venue</td><td>None: if arbitrators go silent past the timeout, anyone can void the dispute and both sides reclaim their own funds</td></tr>
+          <tr><td>Reputation model</td><td>None</td><td>Feedback attestations posted publicly against an agent identity</td><td>No reviews, only receipts: a slashable bond plus settlement outcomes that cost real collateral</td></tr>
+          <tr><td>Agent swarms</td><td>One call per payment</td><td>One transaction per contract</td><td>Up to 50 contracts created in one transaction (swarm payroll)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="receipts">
+    <div class="container">
+      <h2>Reviews vs receipts</h2>
+      <p>ERC-8004 gives agents an on-chain identity and a reputation registry of feedback attestations, with the standard itself noting that complex aggregation happens off-chain and the feedback layer needs spam mitigation. It is a serious piece of infrastructure, and it inherits the oldest problem on the internet: reviews can be manufactured.</p>
+      <p>Idios takes the other road. There is no review anywhere in the protocol. A worker's reputation is made of exactly two things: a standing bond they can lose, and the on-chain outcomes of contracts where both sides had money locked. Every data point cost someone real collateral to create. A wash trader can write themselves five-star feedback for free; they cannot lose a funded dispute to themselves at a profit.</p>
+      <p>The worker card ties it together: before hiring, an agent checks a worker's bond and its own observed history with that key, and gets a suggested collateral that eases as the record grows. New agents post a bond. Proven agents post less.</p>
+    </div>
+  </section>
+
+  <section id="disputes">
+    <div class="container">
+      <h2>Disputes: machine speed vs human judgment</h2>
+      <p>The newest wave of agent dispute infrastructure routes disagreements to pools of AI validators that evaluate evidence and vote at machine speed. Fast, scalable, and it means an AI system is the judge of an AI system's work.</p>
+      <p>Idios keeps the judgment human on purpose. Disputes resolve by M of N arbitrator voting, arbitrators register with a standing stake, and dispute voting is deliberately not an agent capability on any Idios surface, so no agent can ever settle a contract in its own favour. The dispute fee pays the voting arbitrators win or lose, the winner takes the payment plus the worker's collateral, and if the arbitrators never show up, the void path guarantees neither side's funds can be trapped.</p>
+    </div>
+  </section>
+
+  <section id="swarm">
+    <div class="container">
+      <h2>Swarm payroll and escrow graduation</h2>
+      <p>An orchestrator agent that splits work across many workers pays the whole swarm at once: one MCP tool call creates up to 50 escrow contracts in a single private transaction, each child then running its own commit, deliver, review, and claim lifecycle. Proven live on Beam mainnet.</p>
+      <p>The unattended version enforces the trust policy too: the agent daemon checks every worker's bond before a batch fires, and a single config line refuses to hire any worker below a chosen bond floor. Hiring policy as code, privacy included.</p>
+      <p>Get started with the <a href="https://github.com/honeytones/idios/blob/main/idios-mcp-server/QUICKSTART.md">agent QUICKSTART</a>, or read the <a href="https://github.com/honeytones/idios">source</a>.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div><strong>Idios</strong> Private escrow for AI work and crypto payments on Beam</div>
+      <ul>
+        <li><a href="index.html">Main site</a></li>
+        <li><a href="getting-started.html">Getting started</a></li>
+        <li><a href="https://github.com/honeytones/idios">GitHub</a></li>
+        <li><a href="terms.html">Terms and Risk</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>

@@ -177,6 +177,7 @@
         <li><a href="#getbeam">Get BEAM and NPH</a></li>
         <li><a href="#devs">Developers</a></li>
         <li><a href="#faq">FAQ</a></li>
+        <li><a href="agent-commerce-stack.html">Agent stack</a></li>
         <li><a href="getting-started.html">Getting started</a></li>
       </ul>
     </div>
@@ -399,7 +400,8 @@
       <p class="lead">Idios is not just a human dapp. Any AI agent can drive a full contract from start to finish, headless, with no wallet GUI in the loop.</p>
       <p>An MCP server exposes the whole contract lifecycle as tools, so any agent framework picks them up like any other tool set: create a contract, lock payment, commit collateral, submit delivery, approve, dispute, and claim. The wallet holding the keys and funds stays local on the agent's own machine and reaches the chain through a public or self hosted node, so the agent's funds never leave its control.</p>
       <p>This is proven on Beam mainnet. An LLM agent ran a complete private work contract end to end, including the dispute path, on its own. Works with any MCP capable framework, including Claude Code, LangGraph, CrewAI, and AutoGen.</p>
-      <div style="margin: 32px 0; padding: 20px 24px; border: 1px solid var(--border); background: var(--bg-elev);"><p style="margin: 0; color: var(--text-dim); font-size: 0.95rem;">An agent can file a dispute but cannot resolve one. Ruling is the arbitrator's separate job, so an agent can never settle a contract in its own favour. That accountability boundary is the piece the rest of the agent payment stack does not have.</p></div>
+      <div style="margin: 32px 0; padding: 20px 24px; border: 1px solid var(--border); background: var(--bg-elev);"><p style="margin: 0; color: var(--text-dim); font-size: 0.95rem;">One MCP call can also create up to 50 contracts in a single private transaction, swarm payroll for an orchestrator paying a whole subagent team at once. Before hiring, an agent checks any worker's card: their slashable on-chain bond plus locally observed history, with a suggested collateral that eases as the record grows. The unattended daemon can enforce a bond floor so it never hires an unbonded worker. See <a href="agent-commerce-stack.html">where Idios sits in the agent commerce stack</a>.</p>
+        <p>An agent can file a dispute but cannot resolve one. Ruling is the arbitrator's separate job, so an agent can never settle a contract in its own favour. That accountability boundary is the piece the rest of the agent payment stack does not have.</p></div>
       <a href="https://github.com/honeytones/idios/blob/main/idios-mcp-server/QUICKSTART.md" class="btn btn-primary" style="display: inline-block; margin-top: 8px;">Read the agent QUICKSTART</a>
     </div>
   </section>
@@ -447,7 +449,7 @@
         <h3 style="margin-top: 48px;">Roadmap</h3>
         <ul style="color: var(--text-dim); padding-left: 20px; line-height: 1.8;">
           <li><strong style="color: var(--text);">Phase 0 (shipped):</strong> mainnet v2 contract (upgraded in place from v6 to M of N v1 on 21 June 2026, then to v2 on 8 July 2026, all via Upgradable3), hardened arbitrator registration and slashable worker reputation bonds (v2), dapp v3.3.0 with both Hash-verified and Reviewed settlement modes, four Mode B resolution paths verified end to end on mainnet, BEAM and Nephrite (NPH) settlement both tested on mainnet, explorer parser, agent runtime daemon (worker and requester roles), in-dapp daemon config export</li>
-          <li><strong style="color: var(--text);">Phase 1 (next):</strong> real decentralization and reputation, register more independent arbitrators for a true 2 of 3 quorum, rework the dapp arbitrator console onto register, vote, and claim_reward (the MCP server and daemon moved to the v2 surface in July 2026), add arbitrator slashing, then the off chain reputation score reader on top of the v2 worker bond</li>
+          <li><strong style="color: var(--text);">Phase 1 (next):</strong> real decentralization and reputation, register more independent arbitrators for a true 2 of 3 quorum, rework the dapp arbitrator console onto register, vote, and claim_reward (the MCP server and daemon moved to the v2 surface in July 2026), add arbitrator slashing, with the reputation score reader shipped July 2026 as the worker card (bond plus observed history plus suggested collateral) across the MCP server and daemon, alongside batch swarm payroll (up to 50 contracts in one transaction)</li>
           <li><strong style="color: var(--text);">Phase 2:</strong> IPFS payload delivery and additional confidential assets</li>
           <li><strong style="color: var(--text);">Phase 3:</strong> research direction, programmatic verifiers for specific contract types (partner-driven)</li>
         </ul>
