@@ -179,7 +179,8 @@
 
     <p>A company called NovaCRM wants to automate their sales outreach. They need a custom AI agent built in Python using LangChain and the GPT-4 API. The agent should qualify inbound leads from their CRM, draft personalised follow-up emails, and log outcomes back to the database.</p>
 
-    <p>They find a freelance AI developer named Priya on Idios Market. They agree on 2 NPH payment. Priya will put up 1 NPH as collateral. The full project scope is documented in a brief they exchange off-chain via Telegram.</p>
+    <p>They find a freelance AI developer named Priya on Idios Market. They agree on 2 BEAM payment. Priya will put up 1 BEAM as collateral. The full project scope is documented in a brief they exchange off-chain via Telegram.</p>
+    <p><em>Why BEAM in this example? It is the easiest asset to get. If you want stable USD pricing instead, use NPH, a USD pegged confidential stablecoin on Beam: swap BEAM for NPH in the DEX tab inside Beam Desktop and pick NPH as the payment asset when creating the contract.</em></p>
 
     <p>NovaCRM does not want this project visible on-chain. A competitor seeing they are building AI sales automation before launch would be a problem. Priya does not want her client list public.</p>
 
@@ -190,15 +191,15 @@
     <ul>
       <li><strong>Contract ID:</strong> any number they choose, e.g. 88801</li>
       <li><strong>Settlement type:</strong> Reviewed (Mode B)</li>
-      <li><strong>Payment:</strong> 2 NPH</li>
-      <li><strong>Payment asset:</strong> NPH</li>
+      <li><strong>Payment:</strong> 2 BEAM</li>
+      <li><strong>Payment asset:</strong> BEAM</li>
       <li><strong>Priya's pubkey:</strong> the key Priya sent them</li>
       <li><strong>Expiry block:</strong> current block + 20,000 (about two weeks)</li>
       <li><strong>Review window:</strong> 2,000 blocks (about 33 hours to approve or dispute after delivery)</li>
-      <li><strong>Dispute fee:</strong> 0.1 NPH (locked if NovaCRM disputes; win or lose, the fee pays the arbitrators for judging the dispute)</li>
+      <li><strong>Dispute fee:</strong> 0.1 BEAM (locked if NovaCRM disputes; win or lose, the fee pays the arbitrators for judging the dispute)</li>
     </ul>
 
-    <p>NovaCRM clicks <strong>Create Contract</strong>. Their wallet asks them to confirm locking 2 NPH. They confirm. The contract is on-chain. Their payment is locked. Priya can see the contract exists and the terms.</p>
+    <p>NovaCRM clicks <strong>Create Contract</strong>. Their wallet asks them to confirm locking 2 BEAM. They confirm. The contract is on-chain. Their payment is locked. Priya can see the contract exists and the terms.</p>
 
     <div class="callout">
       The work brief itself is shared off-chain via whatever the two parties agree on: Telegram, email, a shared document. Idios stores no free-text descriptions on chain. This is deliberate: nothing about the project leaks.
@@ -206,7 +207,7 @@
 
     <h3>Step 2: Priya commits her collateral</h3>
 
-    <p>NovaCRM shares the contract ID (88801) with Priya off-chain. Priya opens Idios, goes to <strong>My Contracts</strong>, and adds contract 88801 as worker. She clicks <strong>Commit</strong>, locking her 1 NPH collateral.</p>
+    <p>NovaCRM shares the contract ID (88801) with Priya off-chain. Priya opens Idios, goes to <strong>My Contracts</strong>, and adds contract 88801 as worker. She clicks <strong>Commit</strong>, locking her 1 BEAM collateral.</p>
 
     <p>Both sides now have skin in the game. Priya cannot walk away without losing her collateral. NovaCRM cannot disappear with Priya's time for free.</p>
 
@@ -228,7 +229,7 @@
 
     <p>NovaCRM downloads the ZIP, deploys the agent in a test environment, verifies it works, then opens Idios and clicks <strong>Approve Delivery</strong>.</p>
 
-    <p>The contract moves to Settled. Priya clicks <strong>Claim Funds</strong> and receives 2 NPH payment plus her 1 NPH collateral back. Total: 3 NPH. Both balances update privately on-chain.</p>
+    <p>The contract moves to Settled. Priya clicks <strong>Claim Funds</strong> and receives 2 BEAM payment plus her 1 BEAM collateral back. Total: 3 BEAM. Both balances update privately on-chain.</p>
 
     <h3>The four ways a Mode B contract can resolve</h3>
 
@@ -259,11 +260,11 @@
 
     <h3>What if the work is bad?</h3>
 
-    <p>NovaCRM clicks <strong>Dispute</strong>. They pay the 0.1 NPH dispute fee. They contact the arbitrator off-chain at <strong>@tappyoak</strong> on Telegram or Discord to explain the problem. The arbitrators review the situation and resolve on-chain by voting.</p>
+    <p>NovaCRM clicks <strong>Dispute</strong>. They pay the 0.1 BEAM dispute fee. They contact the arbitrator off-chain at <strong>@tappyoak</strong> on Telegram or Discord to explain the problem. The arbitrators review the situation and resolve on-chain by voting.</p>
 
-    <p>If the arbitrators side with NovaCRM: they get their 2 NPH back plus Priya's 1 NPH collateral, 3 NPH total. Priya walks away with nothing.</p>
+    <p>If the arbitrators side with NovaCRM: they get their 2 BEAM back plus Priya's 1 BEAM collateral, 3 BEAM total. Priya walks away with nothing.</p>
 
-    <p>If the arbitrators side with Priya: Priya gets the 2 NPH payment plus her 1 NPH collateral, 3 NPH total. Either way the 0.1 NPH dispute fee goes to the voting arbitrators as payment for judging the dispute.</p>
+    <p>If the arbitrators side with Priya: Priya gets the 2 BEAM payment plus her 1 BEAM collateral, 3 BEAM total. Either way the 0.1 BEAM dispute fee goes to the voting arbitrators as payment for judging the dispute.</p>
 
     <h2 id="mode-a">Mode A: Hash-verified settlement, start to finish</h2>
 
@@ -275,7 +276,7 @@
 
     <h3>The scenario</h3>
 
-    <p>A startup called VisionAI has trained a custom image classification model. They are selling it to a research lab called MedResearch for 5 NPH. Before the contract is created, VisionAI sends MedResearch a small sample of the model and its SHA-256 hash privately: <code>a4f7e2b1...9c03</code>. MedResearch verifies the sample and agrees this is the file they want to buy.</p>
+    <p>A startup called VisionAI has trained a custom image classification model. They are selling it to a research lab called MedResearch for 5 BEAM. Before the contract is created, VisionAI sends MedResearch a small sample of the model and its SHA-256 hash privately: <code>a4f7e2b1...9c03</code>. MedResearch verifies the sample and agrees this is the file they want to buy.</p>
 
     <p>Neither party wants this transaction public. MedResearch does not want competitors knowing they are acquiring this model. VisionAI does not want their client list visible.</p>
 
@@ -290,17 +291,17 @@
     <ul>
       <li><strong>Contract ID:</strong> 88802</li>
       <li><strong>Settlement type:</strong> Hash-verified (Mode A)</li>
-      <li><strong>Payment:</strong> 5 NPH</li>
+      <li><strong>Payment:</strong> 5 BEAM</li>
       <li><strong>VisionAI's pubkey:</strong> provided by VisionAI</li>
       <li><strong>Expiry block:</strong> current block + 3,000</li>
       <li><strong>Result hash:</strong> <code>a4f7e2b1...9c03</code></li>
     </ul>
 
-    <p>Their 5 NPH payment is locked. VisionAI can see the contract.</p>
+    <p>Their 5 BEAM payment is locked. VisionAI can see the contract.</p>
 
     <h3>Step 2: VisionAI commits collateral</h3>
 
-    <p>VisionAI finds contract 88802 in Idios and commits 2.5 NPH collateral. They now have 2.5 NPH at risk. If they deliver the wrong file, they lose it.</p>
+    <p>VisionAI finds contract 88802 in Idios and commits 2.5 BEAM collateral. They now have 2.5 BEAM at risk. If they deliver the wrong file, they lose it.</p>
 
     <h3>Step 3: VisionAI delivers</h3>
 
@@ -310,7 +311,7 @@
 
     <p>Output: <code>a4f7e2b1...9c03</code></p>
 
-    <p>This matches the result hash MedResearch locked in. VisionAI submits this hash to Idios. The contract checks: does <code>delivery_hash == result_hash</code>? Yes. Payment releases automatically. 5 NPH payment plus 2.5 NPH collateral goes to VisionAI. Total: 7.5 NPH. Nobody clicked approve.</p>
+    <p>This matches the result hash MedResearch locked in. VisionAI submits this hash to Idios. The contract checks: does <code>delivery_hash == result_hash</code>? Yes. Payment releases automatically. 5 BEAM payment plus 2.5 BEAM collateral goes to VisionAI. Total: 7.5 BEAM. Nobody clicked approve.</p>
 
     <p>VisionAI then sends the actual model file to MedResearch however they agreed. The file never touches the blockchain.</p>
 
@@ -328,7 +329,7 @@
 
     <p>In every other AI freelance platform, only the buyer's funds are at risk. A developer can take a job, disappear, or deliver broken code, and their only consequence is a lower rating. They make a new account and start again.</p>
 
-    <p>In Idios the worker locks collateral before they can submit delivery. If the dispute goes against them they lose it. A developer who has locked 1 NPH has a direct financial reason to deliver working code. A developer who has not locked anything does not.</p>
+    <p>In Idios the worker locks collateral before they can submit delivery. If the dispute goes against them they lose it. A developer who has locked 1 BEAM has a direct financial reason to deliver working code. A developer who has not locked anything does not.</p>
 
     <p>The collateral amount is set when the contract is created. The dapp defaults to 50% of the payment. For high-trust repeat work you might lower it. For a first engagement with an unknown party you might raise it.</p>
 
